@@ -1,15 +1,12 @@
 <script lang="ts">
-	import contentBackground from '$lib/assets/images/content-background.png';
+	import Background from '$lib/components/shared/Background.svelte';
 	import SideBar from '$lib/components/shared/sidebar/SideBar.svelte';
 	import { cn } from '$lib/utils/utility-util';
 
 	let { children } = $props();
 </script>
 
-<div
-	class="fixed inset-0 -z-10 bg-cover bg-center"
-	style={`background-image: url(${contentBackground});`}
-></div>
+<Background />
 
 <div class="relative z-0 flex h-full w-full items-center justify-center">
 	<div class="w-full max-w-360 p-2.5 md:p-15">
