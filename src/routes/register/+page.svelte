@@ -1,2 +1,4 @@
-<script lang="ts"></script>
+<script lang="ts">
+</script>
+
 <p>Register Page</p>
