@@ -1,0 +1,12 @@
+networks:
+  core-network:
+    external: true
+
+services:
+  webpage:
+    container_name: core-webpage
+    restart: unless-stopped
+    build: 
+      context: ./
+    ports:
+      - "3003:3003"
