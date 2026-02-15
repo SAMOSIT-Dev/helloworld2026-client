@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
-	import backIcon from '$lib/assets/images/sidebar/icons/back.svg';
+	import { ArrowLeft } from '@lucide/svelte';
 	import { getPageContent, isActivePath, pageContents } from '../page-contents';
 	import SidebarButton from './SidebarButton.svelte';
 
@@ -26,7 +26,7 @@
 				aria-label="Back Button"
 				onclick={goBack}
 			>
-				<img src={backIcon} alt="Back" class="w-full h-full object-contain" />
+				<ArrowLeft class="w-full h-full object-contain text-white" aria-hidden="true" />
 			</button>
 			<span class="justify-start text-white text-3xl font-semibold font-['Anantason']">
 				{pageContent?.title || 'Untitled Page'}
