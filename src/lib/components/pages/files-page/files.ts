@@ -18,7 +18,6 @@ export type FileItem = {
 const roles: Role[] = ['ux-ui', 'frontend', 'backend', 'database'];
 
 const kinds = ['pdf', 'png', 'sql', 'docx', 'zip', 'json'];
-const statuses: FileStatus[] = ['available', 'locked', 'missing'];
 
 const randomFrom = <T>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
 
@@ -37,7 +36,6 @@ export const files: FileItem[] = roles.flatMap((role, roleIndex) =>
 	Array.from({ length: 10 }).map((_, i) => {
 		const id = `${role}-${i + 1}`;
 		const kind = randomFrom(kinds);
-		const status = randomFrom(statuses);
 		const sortDate = randomDate(roleIndex * 10 + i);
 
 		return {
@@ -49,7 +47,7 @@ export const files: FileItem[] = roles.flatMap((role, roleIndex) =>
 			downloadUrl: `/files/${role}/${id}.${kind}`,
 			role,
 			sortDate,
-			status,
+			status: i % 4 === 0 ? 'locked' : i % 7 === 0 ? 'missing' : 'available',
 			scheduleIds: [`schedule-${role}-${i + 1}`]
 		};
 	})
