@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import FolderCard from '$lib/components/pages/files-page/folder/FolderCard.svelte';
 	import { getPageContent } from '$lib/components/shared/page-contents';
@@ -21,7 +22,10 @@
 
 	<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 px-8 py-4">
 		{#each roles as role (role.id)}
-			<a href={`/files/${role.id}`} class="block cursor-pointer">
+			<a
+				href={resolve('/(content)/files/[roleId]', { roleId: role.id })}
+				class="block cursor-pointer"
+			>
 				<FolderCard label={role.name} color={role.color} />
 			</a>
 		{/each}
