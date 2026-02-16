@@ -3,22 +3,22 @@
 	import lockFileRaw from '$lib/assets/images/files-page/lock-file.svg?raw';
 	import missingFileRaw from '$lib/assets/images/files-page/missing-file.svg?raw';
 	import { cn } from '$lib/utils/utility-util';
-	import type { FileKind, FileStatus } from '../files';
+	import type { FileStatus } from '../files';
 
 	type Props = {
+		alt?: string;
 		color?: string;
-		kind?: FileKind;
+		kind?: string;
 		status?: FileStatus;
 		className?: string;
-		alt?: string;
 	};
 
 	const {
+		alt,
 		color = '#36BC9B',
 		kind = 'pdf',
 		status = 'available',
-		className = '',
-		alt
+		className = ''
 	}: Props = $props();
 
 	const tint = (svg: string) =>

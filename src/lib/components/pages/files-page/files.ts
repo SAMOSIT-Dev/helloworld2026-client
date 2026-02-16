@@ -1,103 +1,67 @@
 import type { Role } from '$lib/components/shared/roles';
 
-export type FileKind = 'pdf' | 'docx' | 'zip';
 export type FileStatus = 'available' | 'locked' | 'missing';
 
 export type FileItem = {
 	id: string;
-	role: Role;
 	title: string;
-	kind: FileKind;
+	kind: string;
+	timeLabel: string;
 	sizeLabel: string;
-	path: string;
-	availableFrom: Date;
-	availableTo: Date;
+	downloadUrl: string;
+	role: Role;
+	sortDate: Date;
 	status?: FileStatus;
+	scheduleIds?: string[];
 };
 
-export type ComputedFileItem = FileItem & {
-	computedStatus: FileStatus;
-	downloadable: boolean;
-};
-
-const makePath = (role: Role, file: string) => `/files/${role}/${file}`;
-
-const computeStatus = (file: FileItem, current = new Date()): ComputedFileItem => {
-	if (file.status === 'missing') return { ...file, computedStatus: 'missing', downloadable: false };
-
-	const inRange = current >= file.availableFrom && current <= file.availableTo;
-	if (!inRange) return { ...file, computedStatus: 'locked', downloadable: false };
-
-	return { ...file, computedStatus: 'available', downloadable: true };
-};
-
-const baseFiles: FileItem[] = [
+export const files: FileItem[] = [
 	{
-		id: 'ux-01',
-		role: 'ux-ui',
+		id: '1',
 		title: 'UI Kit - Buttons',
 		kind: 'pdf',
-		sizeLabel: '3.4 MB',
-		path: makePath('ux-ui', 'ui-kit-buttons.pdf'),
-		availableFrom: new Date(2025, 2, 12, 8, 0),
-		availableTo: new Date(2025, 2, 12, 9, 0)
-	},
-	{
-		id: 'ux-02',
+		timeLabel: '15 Jan 2024',
+		sizeLabel: '2.3 MB',
+		downloadUrl: '/files/ux-ui/ui-kit-buttons.pdf',
 		role: 'ux-ui',
-		title: 'Prototype v2',
-		kind: 'pdf',
-		sizeLabel: '5.1 MB',
-		path: makePath('ux-ui', 'prototype-v2.pdf'),
-		availableFrom: new Date(2025, 2, 12, 9, 0),
-		availableTo: new Date(2025, 2, 12, 10, 0)
+		sortDate: new Date('2024-01-15T10:00:00Z'),
+		status: 'available',
+		scheduleIds: ['schedule1']
 	},
 	{
-		id: 'fe-01',
+		id: '2',
+		title: 'Frontend Architecture Diagram',
+		kind: 'png',
+		timeLabel: '20 Feb 2024',
+		sizeLabel: '1.1 MB',
+		downloadUrl: '/files/frontend/architecture-diagram.png',
 		role: 'frontend',
-		title: 'File Card Component',
-		kind: 'pdf',
-		sizeLabel: '1.6 MB',
-		path: makePath('frontend', 'file-card.pdf'),
-		availableFrom: new Date(2025, 2, 14, 8, 0),
-		availableTo: new Date(2025, 2, 14, 9, 0)
+		sortDate: new Date('2024-02-20T14:30:00Z'),
+		status: 'locked',
+		scheduleIds: ['schedule2']
 	},
 	{
-		id: 'fe-02',
-		role: 'frontend',
-		title: 'Routing Guards',
+		id: '3',
+		title: 'Backend API Documentation',
 		kind: 'pdf',
-		sizeLabel: '980 KB',
-		path: makePath('frontend', 'routing-guards.pdf'),
-		availableFrom: new Date(2025, 2, 14, 9, 0),
-		availableTo: new Date(2025, 2, 14, 10, 0)
+		timeLabel: '10 Mar 2024',
+		sizeLabel: '5.4 MB',
+		downloadUrl: '/files/backend/api-documentation.pdf',
+		role: 'backend',
+		sortDate: new Date('2024-03-10T09:15:00Z'),
+		status: 'available',
+		scheduleIds: ['schedule3']
 	},
 	{
-		id: 'db-02',
+		id: '4',
+		title: 'Database Schema',
+		kind: 'sql',
+		timeLabel: '5 Apr 2024',
+		sizeLabel: '800 KB',
+		downloadUrl: '/files/database/schema.sql',
 		role: 'database',
-		title: 'Migration v1.3',
-		kind: 'pdf',
-		sizeLabel: '—',
-		path: makePath('database', 'migration-v1-3.pdf'),
-		availableFrom: new Date(2025, 2, 18, 9, 0),
-		availableTo: new Date(2025, 2, 18, 10, 0),
-		status: 'missing'
+		sortDate: new Date('2024-04-05T11:45:00Z'),
+		status: 'missing',
+		scheduleIds: ['schedule4']
 	}
 ];
-
-export const files: ComputedFileItem[] = baseFiles.map((f) => computeStatus(f));
-
-export const formatRangeLabel = (from: Date, to: Date, locale = 'en-GB') => {
-	const d = new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'long' }).format(from);
-	const start = new Intl.DateTimeFormat(locale, {
-		hour: '2-digit',
-		minute: '2-digit',
-		hour12: false
-	}).format(from);
-	const end = new Intl.DateTimeFormat(locale, {
-		hour: '2-digit',
-		minute: '2-digit',
-		hour12: false
-	}).format(to);
-	return `${d} [${start} - ${end}]`;
-};
