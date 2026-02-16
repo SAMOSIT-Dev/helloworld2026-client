@@ -14,16 +14,17 @@
 			<SideBar />
 			<main
 				class={cn(
-					'flex md:flex-col flex-row',
-					'items-center justify-center',
-					'w-full h-full min-h-165',
+					'flex',
+					'w-full min-h-165',
 					'text-white',
 					'md:rounded-r-[20px] md:rounded-l-none',
 					'rounded-t-none rounded-b-[20px]',
 					'bg-zinc-800/80 border border-neutral-400 backdrop-blur-[31.45px]'
 				)}
 			>
-				{@render children()}
+				<div class="flex-1">
+					{@render children()}
+				</div>
 			</main>
 		</div>
 	</div>
