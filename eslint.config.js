@@ -37,7 +37,7 @@ export default defineConfig(
 		}
 	},
 	{
-		files: ['src/lib/components/pages/files-page/FolderIcon.svelte'],
+		files: ['src/lib/components/pages/files-page/folder/FolderIcon.svelte'],
 		rules: {
 			'svelte/no-at-html-tags': 'off'
 		}
