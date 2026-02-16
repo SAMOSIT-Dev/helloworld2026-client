@@ -8,10 +8,11 @@
 		color?: string;
 		className?: string;
 		alt?: string;
-		hovered?: boolean;
 	};
 
-	const { color = '#36BC9B', className = '', alt = 'Folder', hovered = false }: Props = $props();
+	const { color = '#36BC9B', className = '', alt = 'Folder' }: Props = $props();
+
+	let isHovered = $state(false);
 
 	const tint = (svg: string) =>
 		svg
@@ -25,7 +26,7 @@
 	const p = $derived(spring.current);
 
 	$effect(() => {
-		spring.set(hovered ? 1 : 0);
+		spring.set(isHovered ? 1 : 0);
 	});
 </script>
 
@@ -34,9 +35,11 @@
 	style={`color:${color};`}
 	role="img"
 	aria-label={alt}
+	onmouseenter={() => (isHovered = true)}
+	onmouseleave={() => (isHovered = false)}
 >
 	<span
-		class="absolute inset-0 pointer-events-none will-change-[opacity,transform]"
+		class="absolute inset-0 pointer-events-none will-change-[opacity,transform] svg-fit"
 		style={`opacity:${1 - p}; transform:scale(${1 - 0.02 * p});`}
 		aria-hidden="true"
 	>
@@ -44,14 +47,22 @@
 	</span>
 
 	<span
-		class="absolute inset-0 pointer-events-none will-change-[opacity,transform]"
+		class="absolute inset-0 pointer-events-none will-change-[opacity,transform] svg-fit"
 		style={`opacity:${p}; transform:scale(${0.98 + 0.02 * p});`}
 		aria-hidden="true"
 	>
 		{@html hoverSvg}
 	</span>
 
-	<span class="block opacity-0 pointer-events-none" aria-hidden="true">
+	<span class="block opacity-0 pointer-events-none svg-fit" aria-hidden="true">
 		{@html baseSvg}
 	</span>
 </div>
+
+<style>
+	.svg-fit :global(svg) {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+</style>

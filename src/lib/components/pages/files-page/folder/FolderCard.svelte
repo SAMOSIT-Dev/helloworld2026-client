@@ -13,12 +13,20 @@
 
 <button
 	type="button"
-	class={cn('group relative flex flex-col items-center justify-start', 'rounded-2xl', className)}
+	class={cn(
+		'size-38 md:size-50',
+		'relative flex flex-col items-center justify-start',
+		'rounded-2xl',
+		className
+	)}
 >
-	<FolderIcon {color} className="cursor-pointer size-37 md:size-50" />
+	<FolderIcon {color} className="cursor-pointer" />
 
 	<span
-		class="text-center justify-start text-white text-base font-medium font-['Inter'] [text-shadow:0px_4px_19px_rgb(0_0_0/0.64)]"
+		class={cn(
+			'-mt-3',
+			"text-center justify-start text-white text-base font-medium font-['Inter'] [text-shadow:0px_4px_19px_rgb(0_0_0/0.64)]"
+		)}
 	>
 		{label}
 	</span>
