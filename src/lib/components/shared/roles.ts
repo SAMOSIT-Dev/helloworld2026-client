@@ -1,7 +1,13 @@
 export const roleIds = ['ux-ui', 'frontend', 'backend', 'database'] as const;
 export type Role = (typeof roleIds)[number];
 
-export const roles = [
+export type RoleInfo = {
+	id: Role;
+	name: string;
+	color: string;
+};
+
+export const roles: RoleInfo[] = [
 	{ id: 'ux-ui', name: 'UX/UI', color: '#36BC9B' },
 	{ id: 'frontend', name: 'Frontend', color: '#F6BB43' },
 	{ id: 'backend', name: 'Backend', color: '#DB4453' },
