@@ -21,7 +21,9 @@
 
 	<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 px-8 py-4">
 		{#each roles as role (role.id)}
-			<FolderCard label={role.name} color={role.color} />
+			<a href={`/files/${role.id}`} class="block cursor-pointer">
+				<FolderCard label={role.name} color={role.color} />
+			</a>
 		{/each}
 	</div>
 </div>
