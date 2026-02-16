@@ -63,7 +63,11 @@
 </script>
 
 <div
-	class={cn('relative inline-block select-none', className)}
+	class={cn(
+		'relative inline-block select-none',
+		'[&>svg]:w-full [&>svg]:h-full [&>svg]:block',
+		className
+	)}
 	style={`color:${color};`}
 	role="img"
 	aria-label={computedAlt}
