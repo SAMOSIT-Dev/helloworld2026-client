@@ -3,7 +3,7 @@
 	import Card from '$lib/components/ui/Card.svelte';
 	import { cn } from '$lib/utils/utility-util';
 	import { ClockIcon, DatabaseIcon, DownloadIcon, LoaderIcon } from '@lucide/svelte';
-	import type { FileItem } from '../files';
+	import type { FileItem, FileStatus } from '../files';
 	import FileIcon from './FileIcon.svelte';
 
 	type Props = {
@@ -14,7 +14,8 @@
 	const { file, className = '' }: Props = $props();
 
 	const role = $derived(getRoleById(file.role));
-	const disabled = $derived(file.status !== 'available' || !file.downloadUrl);
+	const status = $derived((file.status ?? 'available') as FileStatus);
+	const disabled = $derived(status !== 'available' || !file.downloadUrl);
 
 	let isDownloading = $state(false);
 
@@ -49,12 +50,7 @@
 
 <Card class={cn('w-41.5 h-58 md:w-48 md:h-72', className)}>
 	<div class="w-full h-full flex items-center justify-center flex-col gap-1">
-		<FileIcon
-			color={role?.color}
-			kind={file.kind}
-			status={file.status}
-			className="size-24 md:size-29"
-		/>
+		<FileIcon color={role?.color} kind={file.kind} {status} className="size-24 md:size-29" />
 
 		<div class="flex flex-col gap-0 md:gap-1">
 			<div
@@ -65,16 +61,16 @@
 
 			<div>
 				<ClockIcon color={role?.color} class="inline-block w-4 h-4 mr-1" />
-				<span class="text-white text-xs md:text-sm font-semibold font-['Anantason']"
-					>{file.timeLabel}</span
-				>
+				<span class="text-white text-xs md:text-sm font-semibold font-['Anantason']">
+					{file.timeLabel}
+				</span>
 			</div>
 
 			<div>
 				<DatabaseIcon color={role?.color} class="inline-block w-4 h-4 mr-1" />
-				<span class="text-white text-xs md:text-sm font-semibold font-['Anantason']"
-					>{file.sizeLabel}</span
-				>
+				<span class="text-white text-xs md:text-sm font-semibold font-['Anantason']">
+					{file.sizeLabel}
+				</span>
 			</div>
 		</div>
 
