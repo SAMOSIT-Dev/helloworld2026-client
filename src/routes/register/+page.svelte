@@ -8,9 +8,9 @@
 	import getZodErrors from '$lib/utils/get-zod-errors';
 	import { formRegister, type FormSchema } from '$lib/utils/shema';
 	import { cn } from '$lib/utils/utility-util';
-	let step = $state(1);
-	let errors = $state<Partial<Record<keyof FormSchema, string>>>({});
-	let isLoading = $state<boolean>(false);
+	let step = $state(3);
+	let submitAttempted = $state(false);
+	let isLoading = $state<boolean>(true);
 	let formData = $state<FormSchema>({
 		email: '',
 		studentId: '',
@@ -27,6 +27,11 @@
 		question_5: ''
 	});
 	let contentElement = $state<HTMLElement | null>(null);
+	let errors = $derived.by(() => {
+		const result = formRegister.safeParse(formData);
+		const err = result.success ? {} : getZodErrors(result.error);
+		return { ...err, _submitAttempted: submitAttempted };
+	});
 
 	$effect(() => {
 		if (step && contentElement) {
@@ -34,7 +39,7 @@
 		}
 	});
 
-	const validateStepOne = () => {
+	const isStepOneValid = () => {
 		const result = formRegister
 			.pick({
 				email: true,
@@ -47,17 +52,10 @@
 				track: true
 			})
 			.safeParse(formData);
-
-		if (!result.success) {
-			errors = getZodErrors(result.error);
-			return false;
-		}
-
-		errors = {};
-		return true;
+		return result.success;
 	};
 
-	const validateStepTwo = () => {
+	const isStepTwoValid = () => {
 		const result = formRegister
 			.pick({
 				question_1: true,
@@ -67,29 +65,22 @@
 				question_5: true
 			})
 			.safeParse(formData);
-
-		if (!result.success) {
-			errors = getZodErrors(result.error);
-			return false;
-		}
-
-		errors = {};
-		return true;
+		return result.success;
 	};
 
 	const next = () => {
 		if (step === 1) {
-			if (!validateStepOne()) return false;
+			submitAttempted = true;
+			if (!isStepOneValid()) return false;
 			step = 2;
+			submitAttempted = false;
 			return true;
 		}
 	};
 
-	const checkValidateStepTwo = () => {
-		return validateStepTwo();
-	};
-
 	const submitForm = async () => {
+		submitAttempted = true;
+		if (!isStepTwoValid()) return;
 		isLoading = true;
 		step = 3;
 
@@ -197,14 +188,7 @@
 			{#if step === 1}
 				<StepForm bind:formData {errors} {next} />
 			{:else if step === 2}
-				<StepQuestion
-					validate={checkValidateStepTwo}
-					bind:formData
-					{errors}
-					{next}
-					{back}
-					submit={submitForm}
-				/>
+				<StepQuestion validate={isStepTwoValid} bind:formData {errors} {back} submit={submitForm} />
 			{:else}
 				<StepSuccess {isLoading} />
 			{/if}

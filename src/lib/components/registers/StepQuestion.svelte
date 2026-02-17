@@ -4,23 +4,30 @@
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import type { FormSchema } from '$lib/utils/shema';
 	import { cn } from '$lib/utils/utility-util';
-	import { fa } from 'zod/locales';
 
 	let {
 		formData = $bindable(),
 		errors,
-		next,
 		back,
 		submit,
 		validate
 	} = $props<{
 		formData: FormSchema;
 		errors: any;
-		next: () => void;
 		back: () => void;
 		submit: () => void;
-		validate: () => void;
+		validate: () => boolean;
 	}>();
+
+	let touched = $state<Record<string, boolean>>({});
+
+	const markTouched = (field: string) => {
+		touched[field] = true;
+	};
+
+	const getErrors = (field: string) => {
+		return touched[field] || errors._submitAttempted ? errors[field] : undefined;
+	};
 
 	const questions = [
 		'อะไรเป็นเหตุผลที่ทำให้น้องเข้าร่วมกิจกรรม Hello World และเลือกสมัครในฝ่ายนี้',
@@ -41,6 +48,7 @@
 	let confirmForm = $state(false);
 
 	const handleConfirmForm = () => {
+		questionKeys.forEach((key) => markTouched(key));
 		if (validate()) {
 			confirmForm = true;
 		}
@@ -52,38 +60,43 @@
 	};
 </script>
 
-<div class={cn('space-y-15')}>
-	<div class={cn('space-y-6')}>
+<div class={cn('space-y-12 md:space-y-15')}>
+	<div class={cn('space-y-10')}>
 		{#each questions as question, i}
 			{@const key = questionKeys[i]}
-			<div class="text-2xl">คำถามที่ {i + 1}</div>
-			<div class="text-xl">{question}</div>
+			<div class="space-y-3">
+				<div class="text-xl md:text-2xl font-bold text-white">คำถามที่ {i + 1}</div>
+				<div class="text-lg md:text-xl leading-relaxed">{question}</div>
 
-			<Input bind:value={formData[key] as string} error={errors[key]} />
+				<Input
+					bind:value={formData[key]}
+					error={getErrors(key)}
+					onblur={() => markTouched(key)}
+					placeholder="พิมพ์คำตอบของน้องที่นี่..."
+				/>
+			</div>
 		{/each}
 	</div>
 
 	<div class={cn('flex gap-4 pt-4 justify-center')}>
-		<Button variant="ghost" className={cn(['w-[150px] md:w-[300px]'])} fun={back}>ย้อนกลับ</Button>
-		<Button variant="primary" className={cn(['w-[150px] md:w-[300px]'])} fun={handleConfirmForm}
+		<Button variant="ghost" className="w-[150px] md:w-[300px]" fun={back}>ย้อนกลับ</Button>
+		<Button variant="primary" className="w-[150px] md:w-[300px]" fun={handleConfirmForm}
 			>ส่งฟอร์ม</Button
 		>
 	</div>
 </div>
 
-<Modal bind:show={confirmForm} title="จะล่งแล้วจริงๆๆ หรอ">
-	<div class="text-center space-y-4">
-		<p class="text-lg">น้องตรวจสอบคำตอบครบถ้วนแล้วใช่ไหมครับ?</p>
+<Modal bind:show={confirmForm} title="ยืนยันการส่งข้อมูล">
+	<div class="text-center space-y-4 py-4">
+		<p class="text-lg">ตรวจสอบคำตอบครบถ้วนแล้วใช่ไหมครับ?</p>
 		<p class="text-sm text-gray-400">เมื่อส่งแล้วจะไม่สามารถกลับมาแก้ไขได้อีกนะ</p>
 	</div>
 	<div class="flex items-center justify-center gap-3">
-		<Button
-			variant="ghost"
-			className={cn(['w-[150px] md:w-[300px]'])}
-			fun={() => (confirmForm = false)}>ย้อนกลับ</Button
+		<Button variant="ghost" className="w-[120px] md:w-[200px]" fun={() => (confirmForm = false)}
+			>ย้อนกลับ</Button
 		>
-		<Button variant="primary" className={cn(['w-[150px] md:w-[300px]'])} fun={submitForm}
-			>ส่งฟอร์ม</Button
+		<Button variant="primary" className="w-[120px] md:w-[200px]" fun={submitForm}
+			>ส่งฟอร์มเลย!</Button
 		>
 	</div>
 </Modal>

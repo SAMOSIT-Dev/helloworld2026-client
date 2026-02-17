@@ -25,6 +25,16 @@
 		next: () => void;
 	}>();
 
+	let touched = $state<Record<string, boolean>>({});
+
+	const markTouched = (field: string) => {
+		touched[field] = true;
+	};
+
+	const getErrors = (field: string) => {
+		return touched[field] || errors._submitAttempted ? errors[field] : undefined;
+	};
+
 	const departments = ['เทคโนโลยีสารสนเทศ', 'วิทยาการคอมพิวเตอร์', 'นวัตกรรมบริการดิจิตอล'];
 	const tracks = [
 		{ name: 'UX/UI', normal: UXUI, active: UXUI_ACTIVE },
@@ -33,9 +43,7 @@
 		{ name: 'Database', normal: DB, active: DB_ACTIVE }
 	] as const;
 
-	const handleBack = () => {
-		goto('/');
-	};
+	const handleBack = () => goto('/');
 </script>
 
 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 gap-y-6 md:gap-y-10">
@@ -44,7 +52,8 @@
 			label="Email"
 			placeholder="@mail.kmutt.ac.th"
 			bind:value={formData.email}
-			error={errors.email}
+			error={getErrors('email')}
+			onblur={() => markTouched('email')}
 		>
 			{#snippet icon()}
 				<img src={Input_Kmutt} alt="kmutt-icon" class="w-5 h-5 md:w-6 md:h-6 opacity-40" />
@@ -54,38 +63,43 @@
 		<Input
 			label="ชื่อ - นามสกุล"
 			bind:value={formData.fullName}
+			error={getErrors('fullName')}
+			onblur={() => markTouched('fullName')}
 			placeholder="นาย/นาง สมชาย รักโน๊ต"
-			error={errors.fullName}
 		/>
 
 		<Input
 			label="เบอร์ติดต่อ"
 			bind:value={formData.phone}
+			error={getErrors('phone')}
+			onblur={() => markTouched('phone')}
 			placeholder="ไม่จำเป็นต้องใส่ครับน้อง"
-			error={errors.phone}
 		/>
 	</div>
 
 	<div class="space-y-6 md:space-y-8">
 		<Input
 			label="รหัสนักศึกษา"
-			placeholder="68130500XXX"
-			error={errors.studentId}
+			error={getErrors('studentId')}
+			onblur={() => markTouched('studentId')}
 			bind:value={formData.studentId}
+			placeholder="68130500XXX"
 		/>
 
 		<Input
 			label="ชื่อเล่น"
-			placeholder="BESTLOVENOEY"
-			error={errors.nickname}
+			error={getErrors('nickname')}
+			onblur={() => markTouched('nickname')}
 			bind:value={formData.nickname}
+			placeholder="BESTLOVENOEY"
 		/>
 
 		<Input
 			label="ชื่อดิสคอร์ด"
-			placeholder="example#0001"
-			error={errors.discord}
+			error={getErrors('discord')}
+			onblur={() => markTouched('discord')}
 			bind:value={formData.discord}
+			placeholder="example#0001"
 		>
 			{#snippet icon()}
 				<img src={Input_Discord} alt="discord-icon" class="w-5 h-5 md:w-6 md:h-6 opacity-50" />
@@ -95,7 +109,7 @@
 </div>
 
 <div class="mt-10">
-	{#if errors.major}
+	{#if getErrors('major')}
 		<p class="font-semibold mb-4 text-base text-center text-red-500 md:text-xl">
 			{errors.major}
 		</p>
@@ -107,7 +121,10 @@
 		{#each departments as dept (dept)}
 			<button
 				type="button"
-				onclick={() => (formData.major = dept)}
+				onclick={() => {
+					formData.major = dept;
+					markTouched('major');
+				}}
 				class={cn(
 					'rounded-2xl px-6 py-4 text-left font-semibold transition-all duration-200 border cursor-pointer',
 					formData.major === dept
@@ -122,7 +139,7 @@
 </div>
 
 <div class="mt-10">
-	{#if errors.track}
+	{#if getErrors('track')}
 		<p class="font-semibold mb-4 text-base text-center text-red-500 md:text-xl">
 			{errors.track}
 		</p>
@@ -132,9 +149,15 @@
 
 	<div class="grid grid-cols-4 gap-3">
 		{#each tracks as track (track.name)}
-			<button type="button" onclick={() => (formData.track = track.name)} class="relative">
+			<button
+				type="button"
+				onclick={() => {
+					formData.track = track.name;
+					markTouched('track');
+				}}
+				class="relative"
+			>
 				<img src={track.normal} alt={track.name} />
-
 				<img
 					src={track.active}
 					alt={track.name}
@@ -149,8 +172,6 @@
 </div>
 
 <div class="flex gap-4 pt-8 justify-center">
-	<Button variant="ghost" className={cn(['w-[150px] md:w-[300px]'])} fun={handleBack}
-		>ย้อนกลับ</Button
-	>
-	<Button variant="primary" className={cn(['w-[150px] md:w-[300px]'])} fun={next}>ถัดไป</Button>
+	<Button variant="ghost" className="w-[150px] md:w-[300px]" fun={handleBack}>ย้อนกลับ</Button>
+	<Button variant="primary" className="w-[150px] md:w-[300px]" fun={next}>ถัดไป</Button>
 </div>

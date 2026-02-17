@@ -8,6 +8,7 @@
 		value = $bindable(''),
 		error = '',
 		className = '',
+		onblur,
 		icon
 	} = $props<{
 		label?: string;
@@ -15,6 +16,7 @@
 		value?: string;
 		error?: string;
 		className?: string;
+		onblur?: () => void;
 		icon?: Snippet;
 	}>();
 
@@ -47,6 +49,7 @@
 		<input
 			{id}
 			bind:value
+			{onblur}
 			{placeholder}
 			class="flex-1 px-4 py-2 bg-transparent focus:outline-none placeholder:opacity-40"
 		/>
