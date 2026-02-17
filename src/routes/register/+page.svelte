@@ -8,9 +8,9 @@
 	import getZodErrors from '$lib/utils/get-zod-errors';
 	import { formRegister, type FormSchema } from '$lib/utils/shema';
 	import { cn } from '$lib/utils/utility-util';
-	let step = $state(3);
+	let step = $state(1);
 	let submitAttempted = $state(false);
-	let isLoading = $state<boolean>(true);
+	let isLoading = $state<boolean>(false);
 	let formData = $state<FormSchema>({
 		email: '',
 		studentId: '',
