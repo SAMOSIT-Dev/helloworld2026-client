@@ -11,16 +11,6 @@ export const actions: Actions = {
 	register: async ({ request }) => {
 		const formData = await request.formData();
 		const data = Object.fromEntries(formData) as Record<string, string>;
-		const date = new Date();
-		const thaiDate = date.toLocaleDateString('th-TH', {
-			month: 'long',
-			day: 'numeric',
-			weekday: 'long',
-			hour: '2-digit',
-			minute: '2-digit',
-			second: '2-digit'
-		});
-
 		try {
 			const serviceAccountAuth = new JWT({
 				email: GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -34,20 +24,20 @@ export const actions: Actions = {
 			const sheet = doc.sheetsByIndex[0];
 
 			await sheet.addRow({
-				email: data.email || 'undefined',
-				fullName: data.fullName || 'undefined',
-				studentId: data.studentId || 'undefined',
-				nickname: data.nickname || 'undefined',
-				phone: data.phone || 'undefined',
-				discord: data.discord || 'undefined',
-				major: data.major || 'undefined',
-				track: data.track || 'undefined',
-				question_1: data.question_1 || 'undefined',
-				question_2: data.question_2 || 'undefined',
-				question_3: data.question_3 || 'undefined',
-				question_4: data.question_4 || 'undefined',
-				question_5: data.question_5 || 'undefined',
-				date: thaiDate
+				email: data.email || '',
+				name: data.fullName || '',
+				studentId: data.studentId || '',
+				nickname: data.nickname || '',
+				phone: data.phone || '',
+				username: data.discord || '',
+				major: data.major || '',
+				track: `Treasure Hunter, ${data.track}`,
+				question_1: data.question_1 || ' ',
+				question_2: data.question_2 || ' ',
+				question_3: data.question_3 || ' ',
+				question_4: data.question_4 || ' ',
+				question_5: data.question_5 || ' ',
+				date: new Date()
 			});
 
 			return { success: true };

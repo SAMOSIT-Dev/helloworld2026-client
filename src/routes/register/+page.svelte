@@ -127,7 +127,7 @@
 </script>
 
 <Modal bind:show={isModalOpen} title="แบบฟอร์มสมัครโครงการ SIT HELLO WORLD">
-	<div class={cn('flex-1 overflow-y-auto px-6 py-8 text-left space-y-6 leading-relaxed')}>
+	<div class={cn('flex-1 overflow-y-auto px-2 py-8 text-left space-y-6 leading-relaxed')}>
 		<section class="space-y-2">
 			<h3 class="font-semibold text-base md:text-lg">
 				1. วัตถุประสงค์ในการเก็บรวบรวมข้อมูลส่วนบุคคล

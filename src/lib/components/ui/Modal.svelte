@@ -8,25 +8,26 @@
 		show = $bindable(false),
 		title = '',
 		children,
-		footer
+		footer,
+		className = ''
 	} = $props<{
 		show: boolean;
 		title?: string;
 		children: Snippet;
 		footer?: Snippet;
+		className?: string;
 	}>();
 
-	const close = () => {
-		show = false;
-		goto('/');
-	};
+	// const close = () => {
+	// 	show = false;
+	// 	goto('/');
+	// };
 </script>
 
 {#if show}
 	<div
 		class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xl"
 		transition:fade={{ duration: 200 }}
-		onclick={close}
 		aria-hidden="true"
 	>
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -45,7 +46,10 @@
 			{/if}
 
 			<div
-				class="flex-1 overflow-y-auto px-2 md:px-6 py-4 space-y-6 leading-relaxed custom-scrollbar"
+				class={cn(
+					'flex-1 overflow-y-auto px-2 md:px-6 py-4 space-y-6 leading-relaxed custom-scrollbar',
+					className
+				)}
 			>
 				{@render children()}
 			</div>

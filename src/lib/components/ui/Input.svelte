@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils/utility-util';
 	import type { Snippet } from 'svelte';
+	import { v7 as UUID } from 'uuid';
 
 	let {
 		label = '',
@@ -20,7 +21,7 @@
 		icon?: Snippet;
 	}>();
 
-	const id = crypto.randomUUID();
+	const id = UUID();
 </script>
 
 <div class="flex flex-col w-full">
