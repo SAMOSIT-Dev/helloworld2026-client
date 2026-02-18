@@ -2,16 +2,15 @@
 	import wavingModel from '$lib/assets/images/navbar/waving-model.svg?raw';
 	import enrollBtn from '$lib/assets/images/navbar/enroll-btn.svg';
 	import { fade } from 'svelte/transition';
+	
+	interface Props {
+		sections: { name: string; section: string }[];
+		handleScrollIntoView: (section: string) => void;
+	}
 
 	let isClickWavingModel = $state(false);
 	let timeout: ReturnType<typeof setTimeout>;
-
-	const sections = [
-		{ name: 'หน้าหลัก', section: 'hero' },
-		{ name: 'เกี่ยวกับค่าย', section: 'about' },
-		{ name: 'สาขาในค่าย', section: 'branches' },
-		{ name: 'กำหนดการ', section: 'schedule' }
-	];
+	let { sections = [], handleScrollIntoView }: Props = $props();
 
 	function handleClick() {
 		isClickWavingModel = true;
@@ -33,18 +32,18 @@
          rounded-full
          absolute top-[40px]
          left-1/2 -translate-x-1/2
-         z-50 h-[63px] rela"
+         z-50 h-[63px]"
 >
 	<div class="flex flex-row items-center gap-[16px] xl:gap-[24px] py-[16px]">
 		{#each sections as section}
-			<button class=" text-[16px] xl:text-[20px] font-medium text-[#FFF]">{section.name}</button>
+			<button onclick={() => handleScrollIntoView(section.section)} class=" text-[16px] xl:text-[20px] font-medium text-[#FFF]">{section.name}</button>
 		{/each}
 	</div>
-	<div class="relative h-full">
+	<div class="relative h-full w-[120px]">
 		<button
 			onclick={handleClick}
 			class="h-full flex items-center
-		       [&>svg]:h-full [&>svg]:w-auto bg-blue-500"
+		       [&>svg]:h-full [&>svg]:w-auto"
 		>
 			{@html wavingModel}
 		</button>
@@ -57,7 +56,7 @@
 				out:fade
 			>
 				"รู้หรือป่าว! <br class="xl:hidden" />โครงการ Hello World<br />
-				จัดเป็นครั้งที่ <span class="text-[#F3D339] font-semibold">9</span> แล้วนะ!"
+				จัดเป็นครั้งที่ <span class="text-[#F6BB43] font-semibold">9</span> แล้วนะ!""
 			</span>
 		{/if}
 	</div>
