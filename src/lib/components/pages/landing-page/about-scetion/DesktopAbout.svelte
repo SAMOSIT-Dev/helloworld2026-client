@@ -7,7 +7,7 @@
 		sponsors: string[];
 		currentIcon: number;
 		carouselIcon: (dir: number) => void;
-		icons: { name: string; icon: string; description: string }[];
+		icons: { name: string; icon: string; description: string; fontsize?: string }[];
 	}
 
 	let { sponsors, currentIcon, carouselIcon, icons }: Props = $props();
@@ -46,7 +46,8 @@
 					</div>
 					{#key currentIcon}
 						<div class="col-span-4 flex items-end pl-[12%] pr-[3%]">
-							<div class="flex items-center justify-between w-full h-[70%]">
+							<div class="flex items-center justify-between w-full h-[70%] relative">
+								<p class="absolute top-0 left-0 right-0 text-center z-10 font-medium mt-[-70px] {icons[currentIcon].fontsize}">{icons[currentIcon].name}</p>
 								<button onclick={() => carouselIcon(-1)}>
 									<ChevronLeft
 										size={40}
@@ -58,12 +59,12 @@
 									out:fade={{ duration: 300 }}
 									src={icons[currentIcon].icon}
 									alt={icons[currentIcon].name}
-									class="h-full w-auto object-contain"
+									class="h-full w-auto object-contain z-20"
 								/>
 								<button onclick={() => carouselIcon(1)}>
 									<ChevronRight
 										size={40}
-										class="text-[#A7A7A7] hover:scale-150 transition cursor-pointer"
+										class="text-[#A7A7A7] hover:scale-150 transition cursor-pointer "
 									/>
 								</button>
 							</div>

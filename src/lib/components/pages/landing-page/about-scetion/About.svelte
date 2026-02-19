@@ -9,11 +9,11 @@
 	let currentIcon = $state(0);
 	
 
-	const icons: { name: string; icon: string; description: string }[] = [
-		{ name: 'UX/UI', icon: uxuiIcon, description: 'UX UI description demo test' },
-		{ name: 'Database', icon: databaseIcon, description: 'Database description demo test' },
-		{ name: 'Frontend', icon: frontendIcon, description: 'Frontend description demo test' },
-		{ name: 'Backend', icon: backendIcon, description: 'Backend description demo test' }
+	const icons: { name: string; icon: string; description: string; fontsize?: string }[] = [
+		{ name: 'UX/UI', icon: uxuiIcon, description: 'UX UI description demo test', fontsize: 'text-[140px]' },
+		{ name: 'Database', icon: databaseIcon, description: 'Database description demo test', fontsize: 'text-[110px]' },
+		{ name: 'Frontend', icon: frontendIcon, description: 'Frontend description demo test', fontsize: 'text-[110px]' },
+		{ name: 'Backend', icon: backendIcon, description: 'Backend description demo test', fontsize: 'text-[120px]' }
 	];
     
     const sponsors = ['SPONSOR1', 'SPONSOR2', 'SPONSOR3', 'SPONSOR4', 'SPONSOR5', 'SPONSOR6', 'SPONSOR7', 'SPONSOR8'];

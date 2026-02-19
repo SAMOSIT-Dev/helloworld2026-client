@@ -7,7 +7,7 @@
 		sponsors: string[];
 		currentIcon: number;
 		carouselIcon: (dir: number) => void;
-		icons: { name: string; icon: string; description: string }[];
+		icons: { name: string; icon: string; description: string; fontsize?: string }[];
 	}
 
 	let { sponsors, currentIcon, carouselIcon, icons }: Props = $props();
