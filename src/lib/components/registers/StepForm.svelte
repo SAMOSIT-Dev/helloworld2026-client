@@ -71,7 +71,6 @@
 		/>
 
 		<Input
-			required={true}
 			label="เบอร์ติดต่อ"
 			bind:value={formData.phone}
 			error={getErrors('phone')}

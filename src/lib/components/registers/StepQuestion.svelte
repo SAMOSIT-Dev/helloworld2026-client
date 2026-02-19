@@ -65,7 +65,9 @@
 		{#each questions as question, i}
 			{@const key = questionKeys[i]}
 			<div class="space-y-3">
-				<div class="text-xl md:text-2xl font-bold text-white">คำถามที่ {i + 1}</div>
+				<div class="text-xl md:text-2xl font-bold text-white">
+					คำถามที่ {i + 1} <span class="text-red-500">*</span>
+				</div>
 				<div class="text-lg md:text-xl leading-relaxed">{question}</div>
 
 				<Input
@@ -92,10 +94,10 @@
 		<p class="text-sm text-gray-400">เมื่อส่งแล้วจะไม่สามารถกลับมาแก้ไขได้อีกนะ</p>
 	</div>
 	<div class="flex items-center justify-center gap-3">
-		<Button variant="ghost" className="w-[120px] md:w-[200px]" fun={() => (confirmForm = false)}
+		<Button variant="ghost" className="w-[150px] md:w-[200px]" fun={() => (confirmForm = false)}
 			>ย้อนกลับ</Button
 		>
-		<Button variant="primary" className="w-[120px] md:w-[200px]" fun={submitForm}
+		<Button variant="primary" className="w-[150px] md:w-[200px]" fun={submitForm}
 			>ส่งฟอร์มเลย!</Button
 		>
 	</div>
