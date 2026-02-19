@@ -50,6 +50,7 @@
 	<div class="space-y-6 md:space-y-8">
 		<Input
 			label="Email"
+			required={true}
 			placeholder="@mail.kmutt.ac.th"
 			bind:value={formData.email}
 			error={getErrors('email')}
@@ -61,6 +62,7 @@
 		</Input>
 
 		<Input
+			required={true}
 			label="ชื่อ - นามสกุล"
 			bind:value={formData.fullName}
 			error={getErrors('fullName')}
@@ -69,16 +71,18 @@
 		/>
 
 		<Input
+			required={true}
 			label="เบอร์ติดต่อ"
 			bind:value={formData.phone}
 			error={getErrors('phone')}
 			onblur={() => markTouched('phone')}
-			placeholder="ไม่จำเป็นต้องใส่ครับน้อง"
+			placeholder="096XXXXXXX"
 		/>
 	</div>
 
 	<div class="space-y-6 md:space-y-8">
 		<Input
+			required={true}
 			label="รหัสนักศึกษา"
 			error={getErrors('studentId')}
 			onblur={() => markTouched('studentId')}
@@ -87,6 +91,7 @@
 		/>
 
 		<Input
+			required={true}
 			label="ชื่อเล่น"
 			error={getErrors('nickname')}
 			onblur={() => markTouched('nickname')}
@@ -114,7 +119,10 @@
 			{errors.major}
 		</p>
 	{:else}
-		<h3 class="font-semibold mb-4 text-base text-center md:text-xl">สาขา</h3>
+		<h3 class="font-semibold mb-4 text-base text-center md:text-xl">
+			<span class="text-red-500">*</span>
+			สาขา
+		</h3>
 	{/if}
 
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
@@ -144,7 +152,10 @@
 			{errors.track}
 		</p>
 	{:else}
-		<h3 class="font-semibold mb-4 text-base text-center md:text-xl">เลือกได้</h3>
+		<h3 class="font-semibold mb-4 text-base text-center md:text-xl">
+			<span class="text-red-500">*</span>
+			เลือกได้
+		</h3>
 	{/if}
 
 	<div class="grid grid-cols-4 gap-3">
