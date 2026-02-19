@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const formRegister = z.object({
 	email: z.email('อีเมลไม่ถูกต้อง'),
-	studentId: z.string().min(11, 'รหัสนักศึกษาไม่ถูกต้อง'),
+	studentId: z.string().min(11, 'รหัสนักศึกษาต้องมี 11 หลัก'),
 	fullName: z.string().min(2, 'กรุณากรอกชื่อ'),
 	nickname: z.string().min(1, 'กรุณากรอกชื่อเล่น'),
 	phone: z.string().optional(),
