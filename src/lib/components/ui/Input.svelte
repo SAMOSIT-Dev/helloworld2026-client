@@ -10,6 +10,7 @@
 		error = '',
 		className = '',
 		onblur,
+		required,
 		icon
 	} = $props<{
 		label?: string;
@@ -18,6 +19,7 @@
 		error?: string;
 		className?: string;
 		onblur?: () => void;
+		required?: boolean;
 		icon?: Snippet;
 	}>();
 
@@ -27,6 +29,9 @@
 <div class="flex flex-col w-full">
 	{#if label}
 		<label for={id} class="block text-start mb-1 text-lg font-semibold text-white">
+			{#if required}
+				<span class="text-red-500">*</span>
+			{/if}
 			{label}
 		</label>
 	{/if}
