@@ -44,14 +44,11 @@
 							{icons[currentIcon].description}
 						</p>
 					</div>
-
 					<div class="col-span-4 flex items-center pl-[8%]">
 						<div class="flex items-center justify-between w-full h-[70%]">
 							<button onclick={() => carouselIcon(-1)} class=" ">
 								<ChevronLeft size={30} color="#A7A7A7" />
 							</button>
-
-							<!-- 🔥 FRAME -->
 							<div class="relative h-[60%] aspect-square flex items-center justify-center">
 								{#key currentIcon}
 									<img
@@ -63,7 +60,6 @@
 									/>
 								{/key}
 							</div>
-
 							<button onclick={() => carouselIcon(1)}>
 								<ChevronRight size={30} color="#A7A7A7" />
 							</button>

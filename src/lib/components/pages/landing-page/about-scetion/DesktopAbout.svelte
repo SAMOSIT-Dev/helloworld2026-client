@@ -47,7 +47,7 @@
 					{#key currentIcon}
 						<div class="col-span-4 flex items-end pl-[12%] pr-[3%]">
 							<div class="flex items-center justify-between w-full h-[70%] relative">
-								<p class="absolute top-0 left-0 right-0 text-center z-10 font-medium mt-[-70px] {icons[currentIcon].fontsize}">{icons[currentIcon].name}</p>
+								<p in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} class="absolute top-0 left-0 right-0 text-center z-10 font-medium mt-[-70px] {icons[currentIcon].fontsize}">{icons[currentIcon].name}</p>
 								<button onclick={() => carouselIcon(-1)}>
 									<ChevronLeft
 										size={40}
