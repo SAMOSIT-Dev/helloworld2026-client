@@ -7,7 +7,7 @@
 		sponsors: string[];
 		currentIcon: number;
 		carouselIcon: (dir: number) => void;
-		icons: { name: string; icon: string; description: string; fontsize?: string }[];
+		icons: { name: string; icon: string; description: string; fontsize?: string; fontSizeMobile?: string; fontSizeTablet?: string }[];
 	}
 
 	let { sponsors, currentIcon, carouselIcon, icons }: Props = $props();
@@ -51,12 +51,15 @@
 							</button>
 							<div class="relative h-[60%] aspect-square flex items-center justify-center">
 								{#key currentIcon}
+                                    <p in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} class="absolute top-[-20px] left-0 right-0 text-center z-10 font-medium text-white {icons[currentIcon].fontSizeMobile}">
+                                        {icons[currentIcon].name}
+                                    </p>
 									<img
 										in:fade={{ duration: 300 }}
 										out:fade={{ duration: 300 }}
 										src={icons[currentIcon].icon}
 										alt={icons[currentIcon].name}
-										class="absolute h-full w-auto "
+										class="absolute h-full w-auto z-20"
 									/>
 								{/key}
 							</div>

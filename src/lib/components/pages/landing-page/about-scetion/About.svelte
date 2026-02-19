@@ -9,11 +9,11 @@
 	let currentIcon = $state(0);
 	
 
-	const icons: { name: string; icon: string; description: string; fontsize?: string }[] = [
-		{ name: 'UX/UI', icon: uxuiIcon, description: 'UX UI description demo test', fontsize: 'text-[140px]' },
-		{ name: 'Database', icon: databaseIcon, description: 'Database description demo test', fontsize: 'text-[110px]' },
-		{ name: 'Frontend', icon: frontendIcon, description: 'Frontend description demo test', fontsize: 'text-[110px]' },
-		{ name: 'Backend', icon: backendIcon, description: 'Backend description demo test', fontsize: 'text-[120px]' }
+	const icons: { name: string; icon: string; description: string; fontsize?: string; fontSizeMobile?: string; fontSizeTablet?: string }[] = [
+		{ name: 'UX/UI', icon: uxuiIcon, description: 'UX UI description demo test', fontsize: 'xl:text-[140px]', fontSizeTablet: 'md:text-[100px]', fontSizeMobile: 'text-[30px]' },
+		{ name: 'Database', icon: databaseIcon, description: 'Database description demo test', fontsize: 'xl:text-[110px]', fontSizeTablet: 'md:text-[65px]', fontSizeMobile: 'text-[24px]' },
+		{ name: 'Frontend', icon: frontendIcon, description: 'Frontend description demo test', fontsize: 'xl:text-[110px]', fontSizeTablet: 'md:text-[65px]', fontSizeMobile: 'text-[24px]' },
+		{ name: 'Backend', icon: backendIcon, description: 'Backend description demo test', fontsize: 'xl:text-[120px]', fontSizeTablet: 'md:text-[70px]', fontSizeMobile: 'text-[26px]' }
 	];
     
     const sponsors = ['SPONSOR1', 'SPONSOR2', 'SPONSOR3', 'SPONSOR4', 'SPONSOR5', 'SPONSOR6', 'SPONSOR7', 'SPONSOR8'];

@@ -7,7 +7,14 @@
 		sponsors: string[];
 		currentIcon: number;
 		carouselIcon: (dir: number) => void;
-		icons: { name: string; icon: string; description: string; fontsize?: string }[];
+		icons: {
+			name: string;
+			icon: string;
+			description: string;
+			fontsize?: string;
+			fontSizeMobile?: string;
+			fontSizeTablet?: string;
+		}[];
 	}
 
 	let { sponsors, currentIcon, carouselIcon, icons }: Props = $props();
@@ -47,7 +54,15 @@
 					{#key currentIcon}
 						<div class="col-span-4 flex items-end pl-[12%] pr-[3%]">
 							<div class="flex items-center justify-between w-full h-[70%] relative">
-								<p in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} class="absolute top-0 left-0 right-0 text-center z-10 font-medium mt-[-70px] {icons[currentIcon].fontsize}">{icons[currentIcon].name}</p>
+								<p
+									in:fade={{ duration: 300 }}
+									out:fade={{ duration: 300 }}
+									class="absolute top-0 left-0 right-0 text-center z-10 font-medium mt-[-70px] text-white [text-shadow:3px_0_#000,-3px_0_#000,0_3px_#000,0_-3px_#000,2px_2px_#000,-2px_2px_#000,2px_-2px_#000,-2px_-2px_#000] {icons[
+										currentIcon
+									].fontsize} {icons[currentIcon].fontSizeTablet}"
+								>
+									{icons[currentIcon].name}
+								</p>
 								<button onclick={() => carouselIcon(-1)}>
 									<ChevronLeft
 										size={40}
