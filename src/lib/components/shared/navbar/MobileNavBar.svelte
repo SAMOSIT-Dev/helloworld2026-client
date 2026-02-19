@@ -6,12 +6,14 @@
 	import { fade } from 'svelte/transition';
 
 	interface Props {
-		sections: { name: string; section: string }[];
-		handleScrollIntoView: (section: string) => void;
+		sections: { name: string; id: string }[];
+		navigateToSchedule: () => void;
+		navigateToRegister: () => void;
+		navigateOrScrollToSection: (id: string) => void;
 	}
 
 	let isOpenMenu = $state(false);
-	let { sections = [], handleScrollIntoView }: Props = $props();
+	let { sections = [], navigateToSchedule, navigateToRegister, navigateOrScrollToSection }: Props = $props();
 
 	const DURATION = 300;
 </script>
@@ -39,12 +41,12 @@
 			{/if}
 		</div>
 		<div class="flex flex-row gap-[8px] py-[8px] pr-[20px] md:pr-[42px]">
-			<button
+			<button onclick={navigateToSchedule}
 				class=" border-2 border-[#EEE] rounded-full w-[48px] h-[48px] flex items-center justify-center"
 			>
 				<img src={schedule} alt="Schedule" />
 			</button>
-			<div class="relative">
+			<button onclick={navigateToRegister} class="relative">
 				<img src={circleEnrollBtn} alt="Circle Enroll Button" class="w-[48px] h-[48px]" />
 				<LogOut
 					class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -52,17 +54,16 @@
 					width="24"
 					height="24"
 				/>
-			</div>
+			</button>
 		</div>
 	</nav>
-
 	<div class="flex flex-col items-start pl-[46px] z-[55px] relative gap-4 w-full">
 		{#each sections as section, i}{#if isOpenMenu}
 				<button
 					in:fade={{ duration: DURATION, delay: 50 * i }}
 					out:fade={{ duration: DURATION }}
 					onclick={() => {
-						handleScrollIntoView(section.section);
+						navigateOrScrollToSection(section.id);
 						isOpenMenu = false;
 					}}
 					class="text-white text-[32px] font-semibold z-50"
@@ -71,7 +72,6 @@
 				</button>
 			{/if}{/each}
 	</div>
-
 	{#if isOpenMenu}
 		<div
 			in:fade={{ duration: DURATION }}
