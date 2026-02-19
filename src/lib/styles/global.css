@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+.marquee {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.marquee-track {
+	display: flex;
+	gap: 4rem;
+	white-space: nowrap;
+	animation: scroll 50s linear infinite;
+}
+
+.sponsor-text {
+	font-size: 32px;
+	letter-spacing: 0.2em;
+	font-weight: 500;
+	color: black;
+	opacity: 0.9;
+}
+
+@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
