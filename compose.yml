@@ -6,7 +6,7 @@ services:
   webpage:
     container_name: core-webpage
     restart: unless-stopped
-    build: 
+    build:
       context: ./
     ports:
-      - "3003:3003"
+      - '3003:3003'
