@@ -1,3 +1,3 @@
 <script lang="ts"></script>
 
-<p>Register Page</p>
+<p>File Page</p>

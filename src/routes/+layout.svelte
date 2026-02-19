@@ -1,7 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import banner from '$lib/assets/est_6.png';
-	
+
 	import '$lib/styles/global.css';
 
 	let { children } = $props();
