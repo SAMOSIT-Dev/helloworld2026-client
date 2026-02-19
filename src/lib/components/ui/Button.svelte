@@ -36,6 +36,7 @@
 		class={cn(
 			'relative inline-flex items-center justify-center transition-all duration-300',
 			'rounded-full font-semibold px-8 py-3 w-[300px]',
+			'cursor-pointer',
 			isMobile && 'w-12 h-12 p-0',
 			variant === 'primary' &&
 				'bg-gradient-to-b from-[#F6DD54] via-[#EFC30A] to-[#E4910A] text-[#391D0C]',
