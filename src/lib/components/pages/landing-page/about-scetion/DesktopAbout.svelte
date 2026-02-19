@@ -1,32 +1,22 @@
 <script lang="ts">
 	import { ChevronLeft, ChevronRight } from '@lucide/svelte';
 	import screenshotFrame from '$lib/assets/images/background/screenshot-frame.svg';
-	import uxuiIcon from '$lib/assets/images/branch/uxui-icon.svg';
-	import databaseIcon from '$lib/assets/images/branch/database-icon.svg';
-	import frontendIcon from '$lib/assets/images/branch/frontend-icon.svg';
-	import backendIcon from '$lib/assets/images/branch/backend-icon.svg';
 	import { fade } from 'svelte/transition';
 
-	let currentIcon = $state(0);
+	interface Props {
+		sponsors: string[];
+		currentIcon: number;
+		carouselIcon: (dir: number) => void;
+		icons: { name: string; icon: string; description: string }[];
+	}
 
-	const icons: { name: string; icon: string; description: string }[] = [
-		{ name: 'UX/UI', icon: uxuiIcon, description: 'UX UI description demo test' },
-		{ name: 'Database', icon: databaseIcon, description: 'Database description demo test' },
-		{ name: 'Frontend', icon: frontendIcon, description: 'Frontend description demo test' },
-		{ name: 'Backend', icon: backendIcon, description: 'Backend description demo test' }
-	];
-    
-    const sponsors = ['SPONSOR1', 'SPONSOR2', 'SPONSOR3', 'SPONSOR4', 'SPONSOR5', 'SPONSOR6', 'SPONSOR7', 'SPONSOR8'];
-
-	const carouselIcon = (dir: number) => {
-		currentIcon = (currentIcon + dir + icons.length) % icons.length;
-	};
+	let { sponsors, currentIcon, carouselIcon, icons }: Props = $props();
 </script>
 
-<section class="h-screen bg-[#F6F7FB] flex flex-col relative overflow-hidden">
-	<div class="absolute top-0 left-0 w-full h-[60px] md:h-[120px] border-b-2 border-[#97A5DA] overflow-hidden" >
-		<div class="marquee ">
-			<div class="marquee-track ">
+<section class="hidden md:flex h-screen bg-[#F6F7FB] flex-col relative overflow-hidden">
+	<div class="absolute top-0 left-0 w-full h-[120px] border-b-2 border-[#97A5DA] overflow-hidden">
+		<div class="marquee">
+			<div class="marquee-track">
 				{#each sponsors as sponsor}
 					<span class="sponsor-text">{sponsor}</span>
 				{/each}
@@ -36,10 +26,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex flex-col flex-1 pt-[160px] px-[30px] lg:px-[120px] max-w-[1440px] w-full mx-auto">
+	<div class="flex flex-col flex-1 pt-[200px] md:pt-[220px] px-[5%] max-w-[1440px] w-full mx-auto">
 		<div class="flex flex-col gap-[40px] mb-[40px]">
-			<h1 class="text-[96px] font-Medium leading-none">Hello World คืออะไร?</h1>
-			<p class="text-[20px] leading-[25px] w-[60%]">
+			<h1 class="md:text-[96px] text-[48px] font-Medium leading-none">Hello World คืออะไร?</h1>
+			<p class="text-[20px] leading-[25px] w-full md:w-[80%] font-medium">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio, quae perferendis ducimus
 				recusandae, dolores ex quibusdam voluptatem nihil laudantium cupiditate.
 			</p>
@@ -58,7 +48,10 @@
 						<div class="col-span-4 flex items-end pl-[12%] pr-[3%]">
 							<div class="flex items-center justify-between w-full h-[70%]">
 								<button onclick={() => carouselIcon(-1)}>
-									<ChevronLeft size={40} class="text-[#A7A7A7] hover:scale-110 transition" />
+									<ChevronLeft
+										size={40}
+										class="text-[#A7A7A7] hover:scale-150 transition cursor-pointer"
+									/>
 								</button>
 								<img
 									in:fade={{ duration: 300 }}
@@ -68,11 +61,13 @@
 									class="h-full w-auto object-contain"
 								/>
 								<button onclick={() => carouselIcon(1)}>
-									<ChevronRight size={40} class="text-[#A7A7A7] hover:scale-110 transition" />
+									<ChevronRight
+										size={40}
+										class="text-[#A7A7A7] hover:scale-150 transition cursor-pointer"
+									/>
 								</button>
 							</div>
-						</div>
-					{/key}
+						</div>{/key}
 				</div>
 			</div>
 		</div>
