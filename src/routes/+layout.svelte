@@ -3,10 +3,12 @@
 	import banner from '$lib/assets/est_6.png';
 
 	import '$lib/styles/global.css';
+	import NavBar from '$lib/components/shared/navbar/NavBar.svelte';
 
 	let { children } = $props();
 </script>
 
+<NavBar />
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<title>SIT HelloWorld 2026</title>
