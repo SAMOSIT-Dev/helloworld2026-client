@@ -2,10 +2,11 @@
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
 	import { cn } from '$lib/utils/utility-util';
+	import type { PageItem } from '../page-contents';
 
 	export let href: Pathname;
 	export let label: string;
-	export let icon: string;
+	export let icon: PageItem['icon'];
 	export let active: boolean = false;
 </script>
 
@@ -23,7 +24,7 @@
 			active ? 'bg-zinc-500' : 'bg-transparent'
 		)}
 	>
-		<img src={icon} alt={label} class="w-6 h-6" />
+		<svelte:component this={icon} size={24} color="white" />
 	</div>
 
 	<div
@@ -43,7 +44,7 @@
 		{/if}
 
 		<div class="relative z-10 flex h-full items-center gap-3 pl-4">
-			<img src={icon} alt={label} class="size-5" />
+			<svelte:component this={icon} size={20} color="white" />
 			<span class="text-white text-xl font-semibold font-['Anantason']">
 				{label}
 			</span>

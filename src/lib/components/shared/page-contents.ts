@@ -1,13 +1,13 @@
 import type { Pathname } from '$app/types';
-import filesIcon from '$lib/assets/images/sidebar/icons/files.svg';
-import quizIcon from '$lib/assets/images/sidebar/icons/quiz.svg';
-import scheduleIcon from '$lib/assets/images/sidebar/icons/schedule.svg';
+import type { IconProps } from '@lucide/svelte';
+import { Calendar, File, FlaskConical } from '@lucide/svelte';
+import type { Component } from 'svelte';
 
 export type PageItem = {
 	title: string;
 	description: string;
 	href: Pathname;
-	icon: string;
+	icon: Component<IconProps>;
 	sidebar: boolean;
 };
 
@@ -16,21 +16,21 @@ export const pageContents: PageItem[] = [
 		title: 'Schedule',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		href: '/',
-		icon: scheduleIcon,
+		icon: Calendar,
 		sidebar: true
 	},
 	{
 		title: 'Files',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		href: '/files',
-		icon: filesIcon,
+		icon: File,
 		sidebar: true
 	},
 	{
 		title: 'Quiz',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		href: '/quiz',
-		icon: quizIcon,
+		icon: FlaskConical,
 		sidebar: true
 	}
 ];
