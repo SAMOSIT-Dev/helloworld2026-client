@@ -8,7 +8,7 @@
 
 <Background />
 
-<div class="relative z-0 flex h-full w-full items-center justify-center">
+<div class="relative z-0 flex h-full w-full items-center justify-center mt-22.5">
 	<div class="w-full max-w-360 p-2.5 md:p-15">
 		<div class="flex w-full flex-col md:h-210 md:flex-row">
 			<SideBar />

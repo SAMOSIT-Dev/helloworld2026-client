@@ -45,7 +45,7 @@
 
 		<div class="relative z-10 flex h-full items-center gap-3 pl-4">
 			<svelte:component this={icon} size={20} color="white" />
-			<span class="text-white text-xl font-semibold font-['Anantason']">
+			<span class="text-white text-xl font-semibold">
 				{label}
 			</span>
 		</div>
