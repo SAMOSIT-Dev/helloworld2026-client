@@ -30,10 +30,10 @@
 <div class="flex flex-col w-full">
 	{#if label}
 		<label for={id} class="block text-start mb-1 text-base md:text-lg font-semibold text-white">
-			{#if required}
-				<span class="text-red-500">*</span>
-			{/if}
 			{label}
+			{#if required}
+				<span class="text-red-500 text-end">*</span>
+			{/if}
 		</label>
 	{/if}
 

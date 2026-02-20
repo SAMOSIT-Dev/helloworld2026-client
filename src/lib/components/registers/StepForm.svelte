@@ -69,7 +69,6 @@
 			onblur={() => markTouched('fullName')}
 			placeholder="นาย/นาง สมชาย รักโน๊ต"
 		/>
-
 		<Input
 			label="เบอร์ติดต่อ"
 			bind:value={formData.phone}
@@ -119,8 +118,8 @@
 		</p>
 	{:else}
 		<h3 class="font-semibold mb-4 text-base text-center md:text-xl">
-			<span class="text-red-500">*</span>
 			สาขา
+			<span class="text-red-500">*</span>
 		</h3>
 	{/if}
 
@@ -152,8 +151,8 @@
 		</p>
 	{:else}
 		<h3 class="font-semibold mb-4 text-base text-center md:text-xl">
-			<span class="text-red-500">*</span>
 			เลือกได้
+			<span class="text-red-500">*</span>
 		</h3>
 	{/if}
 

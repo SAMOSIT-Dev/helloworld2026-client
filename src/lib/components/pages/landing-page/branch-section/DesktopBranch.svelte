@@ -40,6 +40,12 @@
 	});
 </script>
 
+<p
+	class="text-[45px] p-10 text-white md:text-[96px] md:font-medium z-50 text-center md:p-6 bg-black"
+>
+	สาขาภายในค่าย
+</p>
+
 <section
 	bind:this={sectionEl}
 	id="branch"
@@ -96,7 +102,7 @@
 	{/each}
 	<div class="absolute inset-0 h-full w-full py-[150px]">
 		<div class="flex flex-col items-center justify-between h-full">
-			<p class="text-[96px] font-medium text-white z-50">สาขาภายในค่าย</p>
+			<p class="text-[96px] font-medium text-white z-50"></p>
 			<div class="flex flex-col gap-[30px] items-center">
 				<p class="text-[64px] text-white font-medium drop-shadow-[0_4px_35px_rgba(0,0,0,0.7)] z-50">
 					ไม่รู้จะเลือกอันไหนดี?

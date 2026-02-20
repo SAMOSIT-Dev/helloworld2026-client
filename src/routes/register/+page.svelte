@@ -3,12 +3,12 @@
 	import StepForm from '$lib/components/registers/StepForm.svelte';
 	import StepQuestion from '$lib/components/registers/StepQuestion.svelte';
 	import StepSuccess from '$lib/components/registers/StepSuccess.svelte';
+	import Background from '$lib/components/shared/Background.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import getZodErrors from '$lib/utils/get-zod-errors';
 	import { formRegister, type FormSchema } from '$lib/utils/shema';
 	import { cn } from '$lib/utils/utility-util';
-	import { tick } from 'svelte';
 	let step = $state(1);
 	let submitAttempted = $state(false);
 	let isLoading = $state<boolean>(false);
@@ -121,6 +121,7 @@
 	};
 </script>
 
+<Background />
 <Modal bind:show={isModalOpen} title="แบบฟอร์มสมัครโครงการ SIT HELLO WORLD">
 	<div class={cn('flex-1 overflow-y-scroll px-2 py-8 text-left space-y-6 leading-relaxed')}>
 		<section class="space-y-2">

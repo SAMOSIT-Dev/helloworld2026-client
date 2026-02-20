@@ -40,11 +40,11 @@
 			"
 		>
 			<Button variant="ghost" className="py-4 md:py-5 bg-white/20 w-full md:w-[250px] lg:w-[300px]">
-				<span class="text-lg md:text-xl lg:text-2xl"> แบบทดสอบ </span>
+				<span class="text-lg md:text-xl lg:text-2xl" onclick={() => {}}> แบบทดสอบ </span>
 			</Button>
 
 			<Button variant="primary" className="py-4 md:py-5 w-full md:w-[250px] lg:w-[300px]">
-				<span class="text-lg md:text-xl lg:text-2xl"> ลงทะเบียน </span>
+				<span class="text-lg md:text-xl lg:text-2xl" onclick={() => {}}> ลงทะเบียน </span>
 			</Button>
 		</div>
 	</div>

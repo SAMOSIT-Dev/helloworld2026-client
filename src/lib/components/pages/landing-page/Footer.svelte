@@ -5,7 +5,7 @@
 	import { cn } from '$lib/utils/utility-util';
 </script>
 
-<div class={cn('py-10')}>
+<div class={cn('py-10 w-screen')}>
 	<div
 		class={cn(
 			'max-w-6xl mx-auto px-6',
@@ -70,7 +70,7 @@
 	<h1 class={cn('text-[55px] md:text-[160px] font-black tracking-tight')}>HELLO WORLD</h1>
 </div>
 
-<div class={cn('mx-auto border-t w-md mt-5 md:w-270 md:mt-2')}></div>
+<div class={cn('border-t mt-5 md:w-270 md:mt-2')}></div>
 
 <div
 	class={cn(
@@ -79,9 +79,9 @@
 		'text-xs text-gray-700 tracking-tight'
 	)}
 >
-	<div>School of Information Technology</div>
+	<div class={cn('text-xs')}>School of Information Technology</div>
 
-	<div class={cn('text-right md:text-left')}>2026 ALL RIGHT RESERVED BY SAMOSIT DEV</div>
+	<div class={cn('text-xs text-right md:text-left')}>2026 ALL RIGHT RESERVED BY SAMOSIT DEV</div>
 
 	<div class={cn('hidden md:block gap-6')}>
 		<span class={cn('cursor-pointer')}>Privacy Policy</span>

@@ -2,28 +2,50 @@
 	import { goto } from '$app/navigation';
 	import map from '$lib/assets/images/map.jpg';
 
+	const isCurrent = (startStr, endStr) => {
+		const now = new Date();
+		const start = new Date(startStr);
+		const end = new Date(endStr);
+		return now >= start && now <= end;
+	};
+
 	const schedules = [
 		{
-			title: 'Base Camp',
-			date: '1 มีนาคม 2026',
-			desc: 'เริ่มปูพื้นฐาน เตรียมเครื่องมือและทำความรู้จักกัน',
-			active: true
+			title: 'Camp Admission',
+			date: '21 - 27 ก.พ. 2569',
+			desc: 'เปิดรับสมัครเหล่าผู้กล้า เข้าสู่การผจญภัยครั้งใหม่',
+			active: isCurrent('2026-02-21T00:00:00', '2026-02-27T23:59:59')
 		},
 		{
-			title: 'The Mystic Forest',
-			date: '15 มีนาคม 2026',
-			desc: 'ตะลุยป่าเวทมนตร์ เรียนรู้เทคนิคขั้นสูง',
-			active: true
+			title: 'Announcement',
+			date: '1 มีนาคม 2569',
+			desc: 'ประกาศรายชื่อผู้ผ่านการคัดเลือกเข้าสู่ Base Camp',
+			active: isCurrent('2026-03-01T00:00:00', '2026-03-01T23:59:59')
 		},
-		{ title: '', date: '', desc: '', active: false },
-		{ title: '', date: '', desc: '', active: false },
-		{ title: '', date: '', desc: '', active: false }
+		{
+			title: 'Training Phase',
+			date: '7 - 21 มีนาคม 2569',
+			desc: 'เข้าสู่ The Mystic Forest เรียนรู้ทักษะและเทคนิคขั้นสูง',
+			active: isCurrent('2026-03-07T00:00:00', '2026-03-21T23:59:59')
+		},
+		{
+			title: 'Project Quest',
+			date: '22 มี.ค. - 18 เม.ย. 2569',
+			desc: 'เริ่มสร้างสรรค์โปรเจกต์ พร้อมคำแนะนำจากเหล่า Mentor',
+			active: isCurrent('2026-03-22T00:00:00', '2026-04-18T23:59:59')
+		},
+		{
+			title: 'Final Presentation',
+			date: '19 เมษายน 2569',
+			desc: 'นำเสนอผลงานชิ้นเอก และสิ้นสุดการเดินทางอย่างภาคภูมิ',
+			active: isCurrent('2026-04-19T00:00:00', '2026-04-19T23:59:59')
+		}
 	];
 </script>
 
 <div
 	class="relative z-1 min-h-screen w-full overflow-hidden py-20"
-	style="background: url({map}) no-repeat center / cover;"
+	style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({map}) no-repeat center / cover;"
 >
 	<div class="inset-0 z-10 flex flex-col items-center px-4 text-white">
 		<h1

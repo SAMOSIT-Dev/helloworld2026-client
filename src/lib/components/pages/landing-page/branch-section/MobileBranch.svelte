@@ -55,7 +55,7 @@
 	<!-- overlay title + button -->
 	<div class=" absolute inset-0 h-full w-full py-[100px] pointer-events-none lg:hidden z-100">
 		<div class="flex flex-col items-center justify-between h-full">
-			<p class="text-[48px] font-medium text-white z-100 text-center">สาขาภายในค่าย</p>
+			<p class="text-[48px] font-medium text-white z-100 text-center"></p>
 			<div class="flex flex-col gap-[20px] items-center pointer-events-auto">
 				<p
 					class="text-[32px] text-white font-medium drop-shadow-[0_4px_35px_rgba(0,0,0,0.7)] z-50 text-center"
