@@ -7,7 +7,14 @@
 		sponsors: string[];
 		currentIcon: number;
 		carouselIcon: (dir: number) => void;
-		icons: { name: string; icon: string; description: string; fontsize?: string; fontSizeMobile?: string; fontSizeTablet?: string }[];
+		icons: {
+			name: string;
+			icon: string;
+			description: string;
+			fontsize?: string;
+			fontSizeMobile?: string;
+			fontSizeTablet?: string;
+		}[];
 	}
 
 	let { sponsors, currentIcon, carouselIcon, icons }: Props = $props();
@@ -29,9 +36,12 @@
 	<div class="flex flex-col flex-1 px-[5%] w-full gap-[60px]">
 		<div class="flex flex-col gap-[30px] mb-[40px]">
 			<h1 class="text-[36px] font-Medium leading-none">Hello World คืออะไร?</h1>
-			<p class="text-[16px] leading-[25px] w-full font-medium">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio, quae perferendis ducimus
-				recusandae, dolores ex quibusdam voluptatem nihil laudantium cupiditate.
+			<p class="text-[16px] leading-[34px] w-full font-medium">
+				"Hello World" คืออะไร? โครงการ Hello World ไม่ใช่แค่ค่ายอบรมทั่วไปแต่เป็น
+				พื้นที่เรียนรู้และค้นหาตัวตน
+				ที่จัดขึ้นเพื่อส่งเสริมทักษะด้านการพัฒนาเว็บไซต์เปิดโอกาสให้น้องๆ SIT ชั้นปีที่ 1
+				ได้ก้าวเข้ามาสัมผัสโลกของการทำงานจริง เรียนรู้การทำงานร่วมกับระหว่างฝ่ายต่างๆ
+				ภายใต้การดูแลและถ่ายทอดประสบการณ์ตรงจากรุ่นพี่
 			</p>
 		</div>
 		<div class="flex-1 flex items-end justify-center">
@@ -51,9 +61,15 @@
 							</button>
 							<div class="relative h-[60%] aspect-square flex items-center justify-center">
 								{#key currentIcon}
-                                    <p in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} class="absolute top-[-20px] left-0 right-0 text-center z-10 font-medium text-white {icons[currentIcon].fontSizeMobile}">
-                                        {icons[currentIcon].name}
-                                    </p>
+									<p
+										in:fade={{ duration: 300 }}
+										out:fade={{ duration: 300 }}
+										class="absolute top-[-20px] left-0 right-0 text-center z-10 font-medium text-white {icons[
+											currentIcon
+										].fontSizeMobile}"
+									>
+										{icons[currentIcon].name}
+									</p>
 									<img
 										in:fade={{ duration: 300 }}
 										out:fade={{ duration: 300 }}

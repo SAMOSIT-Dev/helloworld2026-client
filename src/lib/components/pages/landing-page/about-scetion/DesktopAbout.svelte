@@ -36,9 +36,12 @@
 	<div class="flex flex-col flex-1 pt-[200px] md:pt-[220px] px-[5%] max-w-[1440px] w-full mx-auto">
 		<div class="flex flex-col gap-[40px] mb-[40px]">
 			<h1 class="md:text-[96px] text-[48px] font-Medium leading-none">Hello World คืออะไร?</h1>
-			<p class="text-[20px] leading-[25px] w-full md:w-[80%] font-medium">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio, quae perferendis ducimus
-				recusandae, dolores ex quibusdam voluptatem nihil laudantium cupiditate.
+			<p class="text-[20px] leading-[34px] w-full md:w-[80%] font-medium">
+				"Hello World" คืออะไร? โครงการ Hello World ไม่ใช่แค่ค่ายอบรมทั่วไปแต่เป็น
+				พื้นที่เรียนรู้และค้นหาตัวตน
+				ที่จัดขึ้นเพื่อส่งเสริมทักษะด้านการพัฒนาเว็บไซต์เปิดโอกาสให้น้องๆ SIT ชั้นปีที่ 1
+				ได้ก้าวเข้ามาสัมผัสโลกของการทำงานจริง เรียนรู้การทำงานร่วมกับระหว่างฝ่ายต่างๆ
+				ภายใต้การดูแลและถ่ายทอดประสบการณ์ตรงจากรุ่นพี่
 			</p>
 		</div>
 		<div class="flex-1 flex items-end justify-center">
