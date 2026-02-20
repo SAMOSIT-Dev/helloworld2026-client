@@ -25,7 +25,7 @@
 			<img src={SAMO} class={cn('h-14')} alt="SAMO SIT" />
 		</div>
 
-		<div class={cn('flex flex-wrap gap-20')}>
+		<div class={cn('flex flex-wrap gap-10 md:gap-20')}>
 			<ul class={cn('space-y-5 font-semibold')}>
 				<li class={cn('text-xl')}>
 					<a href="#">หน้าหลัก</a>
@@ -67,7 +67,7 @@
 </div>
 
 <div class={cn('max-w-6xl mx-auto px-6')}>
-	<h1 class={cn('text-[65px] md:text-[160px] font-black tracking-tight')}>HELLO WORLD</h1>
+	<h1 class={cn('text-[55px] md:text-[160px] font-black tracking-tight')}>HELLO WORLD</h1>
 </div>
 
 <div class={cn('mx-auto border-t w-md mt-5 md:w-270 md:mt-2')}></div>
