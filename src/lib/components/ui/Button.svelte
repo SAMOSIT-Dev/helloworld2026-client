@@ -11,10 +11,12 @@
 		className = '',
 		isMobile = false,
 		decoration = true,
-		children
+		children,
+		disabled = false
 	} = $props<{
 		type?: 'button' | 'submit';
 		variant?: 'primary' | 'ghost';
+		disabled?: boolean;
 		fun?: () => void;
 		className?: string;
 		isMobile?: boolean;
@@ -25,18 +27,21 @@
 
 <div
 	class={cn(
-		'inline-block rounded-full transition-transform duration-300 hover:-translate-y-1',
+		'inline-block rounded-full transition-transform duration-300 hover:-translate-y-1 w-auto',
 		variant === 'primary' && 'p-[3px] bg-gradient-to-b from-[#BB5B0D] via-[#673311] to-[#391D0C]',
 		(variant === 'ghost' || isMobile) && 'rounded-full'
+		// className
 	)}
 >
 	<button
 		onclick={fun}
 		{type}
+		{disabled}
 		class={cn(
-			'relative inline-flex items-center justify-center transition-all duration-300',
-			'rounded-full font-semibold px-8 py-3 w-[300px]',
+			'relative inline-flex items-center justify-center transition-all duration-300 w-full',
+			'rounded-full font-semibold px-8 py-3',
 			'cursor-pointer',
+			'disabled:opacity-50 disabled:cursor-not-allowed',
 			isMobile && 'w-12 h-12 p-0',
 			variant === 'primary' &&
 				'bg-gradient-to-b from-[#F6DD54] via-[#EFC30A] to-[#E4910A] text-[#391D0C]',
@@ -65,10 +70,8 @@
 			{/if}
 		{/if}
 
-		<span class="relative z-10">
-			{#if children}
-				{@render children()}
-			{/if}
-		</span>
+		{#if children}
+			{@render children()}
+		{/if}
 	</button>
 </div>
