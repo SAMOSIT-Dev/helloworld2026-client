@@ -1,0 +1,112 @@
+<script lang="ts">
+	import Button from '$lib/components/ui/Button.svelte';
+	import Input from '$lib/components/ui/Input.svelte';
+	import Modal from '$lib/components/ui/Modal.svelte';
+	import type { FormSchema } from '$lib/utils/shema';
+	import { cn } from '$lib/utils/utility-util';
+
+	let {
+		formData = $bindable(),
+		errors,
+		back,
+		submit,
+		validate
+	} = $props<{
+		formData: FormSchema;
+		errors: any;
+		back: () => void;
+		submit: () => void;
+		validate: () => boolean;
+	}>();
+
+	let touched = $state<Record<string, boolean>>({});
+
+	const markTouched = (field: string) => {
+		touched[field] = true;
+	};
+
+	const getErrors = (field: string) => {
+		return touched[field] || errors._submitAttempted ? errors[field] : undefined;
+	};
+
+	const questions = [
+		'อะไรเป็นเหตุผลที่ทำให้น้องเข้าร่วมกิจกรรม Hello World และเลือกสมัครในฝ่ายนี้',
+		'น้องพอจะมีทักษะพื้นฐาน หรือเคยมีประสบการณ์ทำอะไรมาก่อนที่เกี่ยวข้องกับฝ่ายที่สมัครมาไหมครับ',
+		'ถ้าการเข้ากิจกรรม Hello World มีความยาก และ เหนื่อยในการเรียนรู้สิ่งใหม่ๆในสิ่งที่ไม่เคยทำมาก่อนน้องจะมีวิธีรับมือหรือแก้ไขปัญไงบ้าง',
+		'น้องๆสามารถทำงานร่วมกับผู้อื่นได้ไหม ถ้าเกิดมีปัญหาในทีมในช่วงระหว่างการพัฒนาโปรเจคน้องจะมีวิธีการสื่อสาร หรือแก้ไขปัญหาทีเกิดขึ้นอย่างไร',
+		'กิจกรรม Hello World จัดขึ้นเพื่อการเรียนรู้ ลองผิดลองถูก มากกว่าแข่งขัน สิ่งที่น้องคาดหวังว่าจะได้รับติดตัวกลับไปที่สุดหลังจากจบค่ายนี้ คืออะไรครับ'
+	];
+
+	const questionKeys = [
+		'question_1',
+		'question_2',
+		'question_3',
+		'question_4',
+		'question_5'
+	] as const;
+
+	let confirmForm = $state(false);
+
+	const handleConfirmForm = () => {
+		questionKeys.forEach((key) => markTouched(key));
+		if (validate()) {
+			confirmForm = true;
+		}
+	};
+
+	const submitForm = () => {
+		confirmForm = false;
+		submit();
+	};
+</script>
+
+<div class={cn('space-y-12 md:space-y-15')}>
+	<div class={cn('space-y-10')}>
+		{#each questions as question, i}
+			{@const key = questionKeys[i]}
+			<div class="space-y-3">
+				<div class="text-xl md:text-2xl font-bold text-white">
+					คำถามที่ {i + 1} <span class="text-red-500">*</span>
+				</div>
+				<div class="text-lg md:text-xl leading-relaxed">{question}</div>
+
+				<Input
+					bind:value={formData[key]}
+					error={getErrors(key)}
+					onblur={() => markTouched(key)}
+					placeholder="พิมพ์คำตอบของน้องที่นี่..."
+				/>
+			</div>
+		{/each}
+	</div>
+
+	<div class={cn('flex gap-4 pt-4 justify-center')}>
+		<Button variant="ghost" className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3" fun={back}
+			>ย้อนกลับ</Button
+		>
+		<Button
+			variant="primary"
+			className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3"
+			fun={handleConfirmForm}>ส่งฟอร์ม</Button
+		>
+	</div>
+</div>
+
+<Modal bind:show={confirmForm} title="ยืนยันการส่งข้อมูล">
+	<div class="text-center space-y-4 py-4">
+		<p class="text-lg">ตรวจสอบคำตอบครบถ้วนแล้วใช่ไหมครับ?</p>
+		<p class="text-sm text-gray-400">เมื่อส่งแล้วจะไม่สามารถกลับมาแก้ไขได้อีกนะ</p>
+	</div>
+	<div class="flex items-center justify-center gap-3">
+		<Button
+			variant="ghost"
+			className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3"
+			fun={() => (confirmForm = false)}>ย้อนกลับ</Button
+		>
+		<Button
+			variant="primary"
+			className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3"
+			fun={submitForm}>ส่งเลย!</Button
+		>
+	</div>
+</Modal>

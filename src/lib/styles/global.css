@@ -1,4 +1,9 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+	--default-font-family: 'Anuphan', sans-serif;
+}
 
 .marquee {
 	height: 100%;
