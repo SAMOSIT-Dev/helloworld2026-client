@@ -182,6 +182,6 @@
 </div>
 
 <div class="flex gap-4 pt-8 justify-center">
-	<Button variant="ghost" className="w-[150px] md:w-[300px]" fun={handleBack}>ย้อนกลับ</Button>
-	<Button variant="primary" className="w-[150px] md:w-[300px]" fun={next}>ถัดไป</Button>
+	<Button variant="ghost" className="w-[130px] md:w-[300px]" fun={handleBack}>ย้อนกลับ</Button>
+	<Button variant="primary" className="w-[130px] md:w-[300px]" fun={next}>ถัดไป</Button>
 </div>
