@@ -23,8 +23,8 @@
 	const DURATION = 300;
 </script>
 
-<div class="absolute lg:hidden inset-0 z-40">
-	<div class="flex flex-col pt-[24px] gap-[30px] h-screen relative items-center">
+<div class="absolute lg:hidden inset-0">
+	<div class="flex flex-col pt-[24px] gap-[30px] h-screen items-center">
 		<nav
 			class="flex flex-row items-center justify-between w-[calc(100%-12px)] border border-[#969696]
          bg-[rgba(40,40,40,0.79)]
@@ -81,15 +81,16 @@
 					{/if}{/each}
 			</div>
 			{#if isOpenMenu}
-				<div class="flex flex-col items-center gap-[20px] w-full">
+				<div class="flex flex-col items-center gap-[20px] w-full relative z-45">
 					<button
 						in:fade={{ duration: DURATION }}
 						onclick={() => {
-							navigateToSchedule
-							isOpenMenu = false}}
+							navigateToSchedule();
+							isOpenMenu = false;
+						}}
 						class="text-white text-[20px] font-black py-[12px] h-[60px] w-[80%] border-2 border-[#EEE] rounded-full z-50"
 					>
-						Login
+						ตารางเรียน
 					</button>
 					<div
 						in:fade={{ duration: DURATION }}
@@ -97,12 +98,12 @@
 					>
 						<button
 							onclick={() => {
-								navigateToSchedule();
+								navigateToRegister();
 								isOpenMenu = false;
 							}}
 							class="text-[#391D0C] text-[20px] font-black py-[5px] border-2 w-full bg-radial from-[#F6DD54] via-[#EFC30A] to-[#E4910A] rounded-full"
 						>
-							Register
+							ลงทะเบียน
 						</button>
 					</div>
 				</div>
@@ -112,7 +113,7 @@
 			<div
 				in:fade={{ duration: DURATION }}
 				out:fade={{ duration: DURATION }}
-				class="absolute top-0 left-0 w-full h-full bg-[rgba(40,40,40,0.8)] z-40"
+				class="fixed inset-0 top-0 left-0 w-screen h-screen bg-[rgba(40,40,40,0.8)] z-40"
 			></div>
 		{/if}
 	</div>
