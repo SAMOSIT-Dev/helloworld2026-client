@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade, scale } from 'svelte/transition';
 	import { cn } from '$lib/utils/utility-util';
-	import type { Snippet } from 'svelte';
+	import { tick, type Snippet } from 'svelte';
 	import { goto } from '$app/navigation';
 
 	let {
@@ -9,14 +9,31 @@
 		title = '',
 		children,
 		footer,
-		className = ''
+		className = '',
+		step = $bindable(1)
 	} = $props<{
 		show: boolean;
 		title?: string;
 		children: Snippet;
 		footer?: Snippet;
 		className?: string;
+		step?: number;
 	}>();
+
+	let contentElement = $state<HTMLElement | null>(null);
+
+	$effect(() => {
+		step;
+
+		if (!contentElement) return;
+
+		tick().then(() => {
+			contentElement?.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
+		});
+	});
 
 	// const close = () => {
 	// 	show = false;
@@ -46,10 +63,8 @@
 			{/if}
 
 			<div
-				class={cn(
-					'flex-1 overflow-y-auto px-2 md:px-6 py-4 space-y-6 leading-relaxed custom-scrollbar',
-					className
-				)}
+				class={cn('flex-1 overflow-auto px-2 md:px-6 py-4 space-y-6 leading-relaxed', className)}
+				bind:this={contentElement}
 			>
 				{@render children()}
 			</div>

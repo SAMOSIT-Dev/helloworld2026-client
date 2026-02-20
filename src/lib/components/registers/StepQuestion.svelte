@@ -81,9 +81,13 @@
 	</div>
 
 	<div class={cn('flex gap-4 pt-4 justify-center')}>
-		<Button variant="ghost" className="w-[130px] md:w-[300px]" fun={back}>ย้อนกลับ</Button>
-		<Button variant="primary" className="w-[130px] md:w-[300px]" fun={handleConfirmForm}
-			>ส่งฟอร์ม</Button
+		<Button variant="ghost" className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3" fun={back}
+			>ย้อนกลับ</Button
+		>
+		<Button
+			variant="primary"
+			className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3"
+			fun={handleConfirmForm}>ส่งฟอร์ม</Button
 		>
 	</div>
 </div>
@@ -94,9 +98,15 @@
 		<p class="text-sm text-gray-400">เมื่อส่งแล้วจะไม่สามารถกลับมาแก้ไขได้อีกนะ</p>
 	</div>
 	<div class="flex items-center justify-center gap-3">
-		<Button variant="ghost" className="w-[130px] md:w-[200px]" fun={() => (confirmForm = false)}
-			>ย้อนกลับ</Button
+		<Button
+			variant="ghost"
+			className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3"
+			fun={() => (confirmForm = false)}>ย้อนกลับ</Button
 		>
-		<Button variant="primary" className="w-[130px] md:w-[200px]" fun={submitForm}>ส่งเลย!</Button>
+		<Button
+			variant="primary"
+			className="w-[120px] p-1 md:w-[300px] md:px:8 md:py-3"
+			fun={submitForm}>ส่งเลย!</Button
+		>
 	</div>
 </Modal>

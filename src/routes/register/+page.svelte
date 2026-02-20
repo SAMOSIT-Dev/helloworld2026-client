@@ -8,6 +8,7 @@
 	import getZodErrors from '$lib/utils/get-zod-errors';
 	import { formRegister, type FormSchema } from '$lib/utils/shema';
 	import { cn } from '$lib/utils/utility-util';
+	import { tick } from 'svelte';
 	let step = $state(1);
 	let submitAttempted = $state(false);
 	let isLoading = $state<boolean>(false);
@@ -26,17 +27,10 @@
 		question_4: '',
 		question_5: ''
 	});
-	let contentElement = $state<HTMLElement | null>(null);
 	let errors = $derived.by(() => {
 		const result = formRegister.safeParse(formData);
 		const err = result.success ? {} : getZodErrors(result.error);
 		return { ...err, _submitAttempted: submitAttempted };
-	});
-
-	$effect(() => {
-		if (step && contentElement) {
-			contentElement.scrollTo({ top: 0, behavior: 'smooth' });
-		}
 	});
 
 	const isStepOneValid = () => {
@@ -71,8 +65,9 @@
 	const next = () => {
 		if (step === 1) {
 			submitAttempted = true;
-			if (!isStepOneValid()) return false;
+			// if (!isStepOneValid()) return false;
 			step = 2;
+
 			submitAttempted = false;
 			return true;
 		}
@@ -127,7 +122,7 @@
 </script>
 
 <Modal bind:show={isModalOpen} title="แบบฟอร์มสมัครโครงการ SIT HELLO WORLD">
-	<div class={cn('flex-1 overflow-y-auto px-2 py-8 text-left space-y-6 leading-relaxed')}>
+	<div class={cn('flex-1 overflow-y-scroll px-2 py-8 text-left space-y-6 leading-relaxed')}>
 		<section class="space-y-2">
 			<h3 class="font-semibold text-base md:text-lg">
 				1. วัตถุประสงค์ในการเก็บรวบรวมข้อมูลส่วนบุคคล
@@ -180,11 +175,8 @@
 </Modal>
 
 {#if isPolicyAccepted}
-	<Modal bind:show={isPolicyAccepted} title="แบบฟอร์มสมัครโครงการ SIT HELLO WORLD">
-		<div
-			bind:this={contentElement}
-			class={cn('flex-1 overflow-y-auto px-6 py-4 custom-scrollbar max-h-[70vh]')}
-		>
+	<Modal bind:show={isPolicyAccepted} {step} title="แบบฟอร์มสมัครโครงการ SIT HELLO WORLD">
+		<div class={cn('flex-1  px-6 py-4 max-h-[70vh]')}>
 			{#if step === 1}
 				<StepForm bind:formData {errors} {next} />
 			{:else if step === 2}

@@ -49,12 +49,12 @@
 				<img
 					src={VineLeft}
 					alt=""
-					class="absolute -top-2 -left-2 w-[90px] pointer-events-none select-none"
+					class="absolute -top-2 -left-2 w-[60px] md:w-[90px] pointer-events-none select-none"
 				/>
 				<img
 					src={VineRight}
 					alt=""
-					class="absolute -top-6 -right-3 w-[70px] pointer-events-none select-none"
+					class="absolute -top-6 -right-3 w-[60px] md:w-[70px] pointer-events-none select-none"
 				/>
 			{:else}
 				<img
