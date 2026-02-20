@@ -87,13 +87,13 @@
 						onclick={() => {
 							navigateToSchedule
 							isOpenMenu = false}}
-						class="text-white text-[20px] font-black py-[12px] w-[80%] border-2 border-[#EEE] rounded-full z-50"
+						class="text-white text-[20px] font-black py-[12px] h-[60px] w-[80%] border-2 border-[#EEE] rounded-full z-50"
 					>
 						Login
 					</button>
 					<div
 						in:fade={{ duration: DURATION }}
-						class="p-[7px] rounded-full bg-linear-to-b from-[#BB5B0D] to-[#673311] via-[#391D0C] w-[80%] z-50"
+						class="p-[7px] rounded-full bg-linear-to-b h-[60px] from-[#BB5B0D] to-[#673311] via-[#391D0C] w-[80%] z-50"
 					>
 						<button
 							onclick={() => {
