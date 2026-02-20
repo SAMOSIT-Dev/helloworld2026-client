@@ -11,32 +11,32 @@
 			กำหนดการ
 		</h1>
 
-			<div class="mt-12 md:w-80% flex md:flex-col">
+			<div class="mt-12 md:w-[80%]  flex md:flex-col">
 				<div
-					class="w-full order-3 md:order-1 flex md:flex-row flex-col justify-around py-13 ml-4 md:justify-between gap-15 md:px-10 text-white text-center text-[16px] font-medium leading-normal font-['Anuphan'] [leading-trim:both] [text-edge:cap]"
+					class="w-full order-3 md:order-1 flex md:flex-row flex-col justify-around py-13 ml-4 md:m-0 md:justify-between lg:gap-15 lg:px-10 text-white text-center text-[16px] font-medium leading-normal font-['Anuphan'] [leading-trim:both] [text-edge:cap]"
 				>
 					<div
-						class="shrink py-2.5 px-3 md:py-3 md:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
+						class="shrink py-2.5 px-3 md:py-3 lg:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
 					>
 						Base Camp
 					</div>
 					<div
-						class="shrink py-2.5 px-3 md:py-3 md:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
+						class="shrink py-2.5 px-3 md:py-3 lg:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
 					>
 						The Mystic Forest
 					</div>
 					<div
-						class="shrink py-2.5 px-3 md:py-3 md:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
+						class="shrink py-2.5 px-3 md:py-3 lg:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
 					>
 						Coming soon
 					</div>
 					<div
-						class="shrink py-2.5 px-3 md:py-3 md:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
+						class="shrink py-2.5 px-3 md:py-3 lg:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
 					>
 						Coming soon
 					</div>
 					<div
-						class="shrink py-2.5 px-3 md:py-3 md:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
+						class="shrink py-2.5 px-3 md:py-3 lg:px-10 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
 					>
 						Coming soon
 					</div>
@@ -44,7 +44,7 @@
 
 				<!-- center -->
 				<div
-					class="flex flex-col md:flex-row gap-10	 md:gap-5 h-full items-center justify-between order-2 py-16 px-2 md:px-25 md:py-2 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
+					class="flex flex-col md:flex-row gap-10 md:gap-5 h-full items-center justify-between order-2 py-16 px-2 lg:px-25 md:py-2 rounded-[100px] border border-[#969696] bg-[rgba(102,102,102,0.43)] backdrop-blur-[6.4px]"
 				>
 					<div class="relative md:w-11.75 md:h-11.75 ">
 						<svg
@@ -240,7 +240,7 @@
 					</div>
 				</div>
 
-				<div class="flex md:flex-row flex-col justify-between mt-11 ml-5 md:mt-5 md:pl-15 md:order-3">
+				<div class="flex md:flex-row flex-col justify-between mt-11 ml-5 md:mt-5 lg:pl-15 md:order-3">
 					<div class="w-32 md:w-44 mb-10 text-right md:text-left pr-6 md:pr-0">
 						<p
 							class="md:mb-6 text-white text-[10px]  md:text-base font-semibold leading-normal font-['Anuphan'] [text-shadow:0_4px_39px_rgba(0,0,0,0.83)] [leading-trim:both] [text-edge:cap]"
