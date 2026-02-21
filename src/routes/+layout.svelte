@@ -2,6 +2,8 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import banner from '$lib/assets/est_6.png';
 
+	import logo from '$lib/assets/images/logo/hello-logo.svg'
+
 	import '$lib/styles/global.css';
 	import NavBar from '$lib/components/shared/navbar/NavBar.svelte';
 
@@ -9,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href={logo} />
 	<title>SIT HelloWorld 2026</title>
 	<meta property="og:title" content="SIT HelloWorld 2026" />
 	<meta

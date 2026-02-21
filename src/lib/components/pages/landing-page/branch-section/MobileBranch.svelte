@@ -20,7 +20,7 @@
 
 	let { icons, dirtFloor }: Props = $props();
 	let hoveredIndex: number | null = $state(null);
-	let checkedIndex: number | null = $state(null);
+	let checkedIndex: number | null = $state(0);
 
 	function isChecked(index: number | null) {
 		return index === checkedIndex;
@@ -35,7 +35,7 @@
 	<div class="flex flex-col w-screen min-w-0 overflow-x-auto overflow-y-hidden">
 		<div class="flex flex-row gap-4 px-4 py-0 w-max">
 			{#each icons as icon, i}
-				<label>
+				<label class="relative snap-center z-30">
 					<input
 						type="radio"
 						name="brnach-finder"
@@ -98,18 +98,18 @@
 	</div>
 
 	<!-- overlay title + button -->
-	<div class="absolute inset-0 h-full w-full py-[100px] pointer-events-none lg:hidden z-40">
+	<div class="absolute inset-0 h-full w-full py-[100px] pointer-events-none lg:hidden z-30">
 		<div class="flex flex-col items-center justify-between h-full">
 			<p class="text-[48px] font-medium text-white z-100 text-center"></p>
 			<div class="flex flex-col gap-[20px] items-center pointer-events-auto">
 				<p
-					class="text-[32px] text-white font-medium drop-shadow-[0_4px_35px_rgba(0,0,0,0.7)] z-50 text-center"
+					class="text-[32px] text-white font-medium drop-shadow-[0_4px_35px_rgba(0,0,0,0.7)] z-30 text-center"
 				>
 					ไม่รู้จะเลือกอันไหนดี?
 				</p>
 				<button
 					onclick={() => goto('/quiz')}
-					class="relative w-[280px] py-[16px] rounded-full border-2 text-white overflow-hidden border-[#E3E3E3] backdrop-blur-md cursor-pointer z-50"
+					class="relative w-[280px] py-[16px] rounded-full border-2 text-white overflow-hidden border-[#E3E3E3] backdrop-blur-md pointer-events-auto z-50"
 				>
 					<span
 						class="absolute inset-0 [background:linear-gradient(to_bottom,#333333,#A8A8A8)] rounded-full opacity-50"

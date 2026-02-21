@@ -67,10 +67,11 @@
 			bind:value={formData.fullName}
 			error={getErrors('fullName')}
 			onblur={() => markTouched('fullName')}
-			placeholder="นาย/นาง สมชาย รักโน๊ต"
+			placeholder="นาย/นางสาว สมชาย รักโน๊ต"
 		/>
 		<Input
 			label="เบอร์ติดต่อ"
+			required={true}
 			bind:value={formData.phone}
 			error={getErrors('phone')}
 			onblur={() => markTouched('phone')}
@@ -94,7 +95,7 @@
 			error={getErrors('nickname')}
 			onblur={() => markTouched('nickname')}
 			bind:value={formData.nickname}
-			placeholder="BESTLOVENOEY"
+			placeholder="ชื่อเล่นสุดเท่ของน้อง..."
 		/>
 
 		<Input

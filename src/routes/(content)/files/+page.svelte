@@ -4,9 +4,11 @@
 	import FolderCard from '$lib/components/pages/files-page/folder/FolderCard.svelte';
 	import { getPageContent } from '$lib/components/shared/page-contents';
 	import { roles } from '$lib/components/shared/roles';
-
+			
 	const pathname = $derived(page.url.pathname);
 	const content = $derived(getPageContent(pathname));
+
+	
 </script>
 
 <div class="flex flex-col items-center justify-center md:gap-5 h-full gap-6">

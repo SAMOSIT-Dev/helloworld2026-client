@@ -67,7 +67,7 @@
 	</nav>
 	{#if isOpenMenu}
 		<div
-			class="flex flex-col fixed min-h-0 top-0 mt-[100px] z-200 overflow-hidden items-start justify-between h-screen w-full pb-[80px]"
+			class="flex flex-col fixed min-h-0 top-0 mt-[100px] z-10000 overflow-hidden items-start justify-between h-screen w-full pb-[80px]"
 		>
 			<div class="flex flex-col items-start pl-[46px] z-[55px] relative gap-4">
 				{#each sections as section, i}{#if isOpenMenu}
@@ -85,7 +85,7 @@
 					{/if}{/each}
 			</div>
 			{#if isOpenMenu}
-				<div class="flex flex-col items-center gap-[20px] w-full relative z-45 mb-20">
+				<div class="flex flex-col items-center gap-[20px] w-full relative z-1000 mb-20">
 					<button
 						in:fade={{ duration: DURATION }}
 						onclick={() => {

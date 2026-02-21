@@ -16,7 +16,7 @@ export const formRegister = z.object({
 		.refine((val) => val.startsWith('681305'), 'เฉพาะนักศึกษาคณะ SIT (รหัส 681305XXXXX) เท่านั้น'),
 	fullName: z.string().min(2, 'กรุณากรอกชื่อ'),
 	nickname: z.string().min(1, 'กรุณากรอกชื่อเล่น'),
-	phone: z.string().optional(),
+	phone: z.string().min(1,"กรุณาใส่เบอร์"),
 	discord: z.string().optional(),
 	major: z.string().min(1, 'กรุณาเลือกสาขา'),
 	track: z.string().min(1, 'กรุณาเลือกสายที่ต้องการสมัคร'),

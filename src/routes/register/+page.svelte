@@ -65,7 +65,7 @@
 	const next = () => {
 		if (step === 1) {
 			submitAttempted = true;
-			// if (!isStepOneValid()) return false;
+			if (!isStepOneValid()) return false;
 			step = 2;
 
 			submitAttempted = false;

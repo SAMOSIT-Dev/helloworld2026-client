@@ -10,3 +10,5 @@ services:
       context: ./
     ports:
       - '3003:3003'
+    networks:
+      - core-network
