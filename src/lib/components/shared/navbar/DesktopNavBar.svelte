@@ -12,7 +12,12 @@
 
 	let isClickWavingModel = $state(false);
 	let timeout: ReturnType<typeof setTimeout>;
-	let { sections = [], navigateToSchedule, navigateToRegister, navigateOrScrollToSection}: Props = $props();
+	let {
+		sections = [],
+		navigateToSchedule,
+		navigateToRegister,
+		navigateOrScrollToSection
+	}: Props = $props();
 
 	function handleClick() {
 		isClickWavingModel = true;
@@ -22,8 +27,6 @@
 			isClickWavingModel = false;
 		}, 1500); // ⏱ 2.5 วิ
 	}
-
-
 </script>
 
 <nav
@@ -36,7 +39,7 @@
          rounded-full
         fixed top-[40px]
          left-1/2 -translate-x-1/2
-         z-50 h-[63px]"
+         z-100 h-[63px]"
 >
 	<div class=" flex flex-row items-center gap-[16px] xl:gap-[24px] py-[16px]">
 		{#each sections as section}
@@ -77,11 +80,12 @@
 		{/if}
 	</div>
 	<div class="flex flex-row items-center gap-[8px] py-[8px]">
-		<button onclick={navigateToSchedule}
-			class="text-[16px] xl:text-[20px] font-medium text-[#FFF] border-2 h-[40px] xl:h-[53px] px-[24px] xl:px-[36px] rounded-full transition-colors duration-300 hover:border-[#F6BB43] hover:text-[#F6BB43]"
+		<button
+			onclick={navigateToSchedule}
+			class="text-[16px] xl:text-[20px] font-medium text-[#FFF] border-2 h-[40px] xl:h-[53px] px-[24px] xl:px-[36px] rounded-full transition-colors duration-300 hover:border-[#F6BB43] hover:text-[#F6BB43] cursor-pointer"
 			>ตารางเรียน
 		</button>
-		<button onclick={navigateToRegister} class="relative inline-block h-full">
+		<button onclick={navigateToRegister} class="relative inline-block h-full cursor-pointer">
 			<img src={enrollBtn} alt="Enroll" class="block h-[56px] xl:h-[63px]" />
 			<span
 				class="absolute inset-0 flex items-center justify-center text-[16px] xl:text-[20px] font-medium text-[#391D0C]"
