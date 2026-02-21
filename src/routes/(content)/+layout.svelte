@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Background from '$lib/components/shared/Background.svelte';
+	import NavBar from '$lib/components/shared/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/shared/sidebar/SideBar.svelte';
 	import { cn } from '$lib/utils/utility-util';
 
@@ -8,7 +9,9 @@
 
 <Background />
 
-<div class="relative z-0 flex h-full w-full items-center justify-center mt-22.5">
+<NavBar />
+
+<div class="relative z-0 flex h-full w-full items-center justify-center mt-23.75">
 	<div class="w-full max-w-360 p-2.5 md:p-15">
 		<div class="flex w-full flex-col md:h-210 md:flex-row">
 			<SideBar />
