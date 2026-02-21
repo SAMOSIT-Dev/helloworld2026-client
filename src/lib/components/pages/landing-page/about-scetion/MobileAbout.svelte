@@ -50,7 +50,7 @@
 				<div class="absolute inset-0 grid grid-cols-9">
 					<div class="col-span-2"></div>
 					<div class="col-span-3 pt-[25%] pl-[5%]">
-						<p class="text-[20px] leading-[25px] text-white font-medium">
+						<p class="text-xs md:text-[20px] leading-[18px] text-white font-medium">
 							{icons[currentIcon].description}
 						</p>
 					</div>

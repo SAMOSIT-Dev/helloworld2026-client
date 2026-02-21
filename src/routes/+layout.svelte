@@ -8,7 +8,6 @@
 	let { children } = $props();
 </script>
 
-<NavBar />
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<title>SIT HelloWorld 2026</title>

@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import map from '$lib/assets/images/map.jpg';
 
-	const isCurrent = (startStr, endStr) => {
+	const isCurrent = (startStr: string, endStr: string) => {
 		const now = new Date();
 		const start = new Date(startStr);
 		const end = new Date(endStr);
@@ -109,12 +109,12 @@
 							</div>
 
 							{#if item.title}
-								<div class="flex items-center pl-4 md:hidden">
+								<div class="flex items-center justify-center pl-4 md:hidden">
 									<div
-										class="w-full rounded-full border border-[#969696] bg-[rgba(102,102,102,0.43)] px-4 py-2 text-center backdrop-blur-[6.4px]"
+										class="w-full rounded-full border border-[#969696] bg-[rgba(102,102,102,0.43)] mx-auto px-3 py-2 text-center backdrop-blur-[6.4px] flex items-center justify-center"
 									>
 										<span
-											class="text-xs font-medium {item.active ? 'text-white' : 'text-gray-400'}"
+											class="text-[10px] font-medium {item.active ? 'text-white' : 'text-gray-400'}"
 										>
 											{item.title}
 										</span>

@@ -80,7 +80,7 @@
 			{#key hoveredIndex === i}
 				<p
 					in:fade={{ duration: 300 }}
-					class="text-center font-800 text-16 z-20 px-[10%] h-[60px] {hoveredIndex === i
+					class="text-center font-bold text-16 z-20 px-[10%] h-[60px] {hoveredIndex === i
 						? 'text-[#FFFFFF]'
 						: 'text-[#313131]'}"
 				>
@@ -88,7 +88,7 @@
 				</p>
 			{/key}
 			<p
-				class="text-center font-800 md:text-[60px] {icon.fontSizeXl}  z-20 px-[10%] leading-[0.8] bg-linear-to-b group-hover:from-[#FFFFFF] group-hover:to-[#BFBFBF] from-[#313131] to-[#2A2A2A] bg-clip-text text-transparent transition-colors duration-500"
+				class="text-center font-bold md:text-[60px] {icon.fontSizeXl}  z-20 px-[10%] leading-[0.8] bg-linear-to-b group-hover:from-[#FFFFFF] group-hover:to-[#BFBFBF] from-[#313131] to-[#2A2A2A] bg-clip-text text-transparent transition-colors duration-500"
 			>
 				{icon.name1}<br />{icon.name2}
 			</p>
