@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import background from '$lib/assets/images/cta2.png';
 	import Button from '$lib/components/ui/Button.svelte';
 </script>
@@ -40,11 +41,25 @@
 			"
 		>
 			<Button variant="ghost" className="py-4 md:py-5 bg-white/20 w-full md:w-[250px] lg:w-[300px]">
-				<span class="text-lg md:text-xl lg:text-2xl" onclick={() => {}}> แบบทดสอบ </span>
+				<span
+					class="text-lg md:text-xl lg:text-2xl"
+					onclick={() => {
+						goto('/quiz');
+					}}
+				>
+					แบบทดสอบ
+				</span>
 			</Button>
 
 			<Button variant="primary" className="py-4 md:py-5 w-full md:w-[250px] lg:w-[300px]">
-				<span class="text-lg md:text-xl lg:text-2xl" onclick={() => {}}> ลงทะเบียน </span>
+				<span
+					class="text-lg md:text-xl lg:text-2xl"
+					onclick={() => {
+						goto('/register');
+					}}
+				>
+					ลงทะเบียน
+				</span>
 			</Button>
 		</div>
 	</div>

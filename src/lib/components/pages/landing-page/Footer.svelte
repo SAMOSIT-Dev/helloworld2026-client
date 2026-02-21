@@ -5,7 +5,7 @@
 	import { cn } from '$lib/utils/utility-util';
 </script>
 
-<div class={cn('py-10 w-screen')}>
+<div class={cn('py-10 w-screen ')}>
 	<div
 		class={cn(
 			'max-w-6xl mx-auto px-6',
@@ -13,7 +13,7 @@
 			'justify-between items-start gap-12'
 		)}
 	>
-		<div class={cn('flex items-start gap-6')}>
+		<div class={cn('flex items-start gap-3 md:gap-6')}>
 			<img src={KMUTT} class={cn('h-12')} alt="KMUTT" />
 
 			<div class={cn('w-px h-14 bg-gray-400')}></div>
@@ -25,7 +25,7 @@
 			<img src={SAMO} class={cn('h-14')} alt="SAMO SIT" />
 		</div>
 
-		<div class={cn('flex flex-wrap gap-10 md:gap-20')}>
+		<div class={cn('flex flex-wrap gap-8 md:gap-20')}>
 			<ul class={cn('space-y-5 font-semibold')}>
 				<li class={cn('text-xl')}>
 					<a href="#">หน้าหลัก</a>
@@ -67,10 +67,12 @@
 </div>
 
 <div class={cn('max-w-6xl mx-auto px-6')}>
-	<h1 class={cn('text-[55px] md:text-[160px] font-black tracking-tight')}>HELLO WORLD</h1>
+	<h1 class={cn('text-[40px] text-center md:text-[160px] font-black tracking-tight')}>
+		HELLO WORLD
+	</h1>
 </div>
 
-<div class={cn('border-t mt-5 md:w-270 md:mt-2')}></div>
+<div class={cn(' border-t w-93 mt-5 md:w-367 md:mt-2')}></div>
 
 <div
 	class={cn(

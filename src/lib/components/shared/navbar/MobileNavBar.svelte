@@ -30,7 +30,7 @@
          bg-[rgba(40,40,40,0.79)]
          backdrop-blur-[12.8px]
          rounded-full
-         z-50 h-[63px]"
+         z-100 h-[63px]"
 		>
 			<div class="flex flex-row relative pl-[20px] md:pl-[42px] h-full items-center gap-[4px]">
 				<button onclick={() => (isOpenMenu = !isOpenMenu)} class="relative w-[80px] h-full">

@@ -39,7 +39,7 @@
          rounded-full
         fixed top-[40px]
          left-1/2 -translate-x-1/2
-         z-50 h-[63px]"
+         z-100 h-[63px]"
 >
 	<div class=" flex flex-row items-center gap-[16px] xl:gap-[24px] py-[16px]">
 		{#each sections as section}
