@@ -94,7 +94,7 @@
 			error={getErrors('nickname')}
 			onblur={() => markTouched('nickname')}
 			bind:value={formData.nickname}
-			placeholder="BESTLOVENOEY"
+			placeholder="ชื้อเล่น"
 		/>
 
 		<Input

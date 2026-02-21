@@ -63,7 +63,6 @@
 				<li class={cn('text-sm cursor-pointer')}>คณะเทคโนโลยีสารสนเทศ</li>
 			</ul>
 		</div>
-	</div>
 </div>
 
 <div class="flex relative overflow-hidden max-w-6xl mx-auto w-auto flex-col">
