@@ -48,7 +48,7 @@
 			<img src={SAMO} class={cn('h-14')} alt="SAMO SIT" />
 		</div>
 
-		<div class={cn('flex flex-col space-y-7 md:flex-row gap-8 md:gap-20')}>
+		<div class={cn('flex  space-y-7  gap-4 md:gap-20')}>
 			<ul class={cn('space-y-5 font-semibold')}>
 				<li class={cn('text-xl font-bold')}>
 					<a href="/" onclick={(e) => navigateOrScrollToSection(e, 'hero')}>หน้าหลัก</a>
@@ -93,7 +93,7 @@
 
 	<div class="flex relative overflow-hidden max-w-6xl mt-5 mx-auto w-auto flex-col">
 		<div class={cn('w-full mx-auto px-6')}>
-			<h1 class={cn('text-[64px] text-center md:text-[160px] font-black tracking-tight')}>
+			<h1 class={cn('text-[49px] text-center md:text-[160px] font-black tracking-tight')}>
 				HELLO WORLD
 			</h1>
 		</div>
