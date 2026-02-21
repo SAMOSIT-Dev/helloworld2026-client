@@ -48,7 +48,7 @@
 			<img src={SAMO} class={cn('h-14')} alt="SAMO SIT" />
 		</div>
 
-		<div class={cn('flex  space-y-7  gap-4 md:gap-20')}>
+		<div class={cn('flex flex-col md:flex-row space-y-7  gap-4 md:gap-20')}>
 			<ul class={cn('space-y-5 font-semibold')}>
 				<li class={cn('text-xl font-bold')}>
 					<a href="/" onclick={(e) => navigateOrScrollToSection(e, 'hero')}>หน้าหลัก</a>
