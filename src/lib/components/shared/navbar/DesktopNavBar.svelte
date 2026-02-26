@@ -2,6 +2,8 @@
 	import wavingModel from '$lib/assets/images/navbar/waving-model.svg?raw';
 	import enrollBtn from '$lib/assets/images/navbar/enroll-btn.svg';
 	import { fade } from 'svelte/transition';
+	import { closeForm, cn } from '$lib/utils/utility-util';
+	import Button from '$lib/components/ui/Button.svelte';
 
 	interface Props {
 		sections: { name: string; id: string }[];
@@ -85,13 +87,8 @@
 			class="text-[16px] xl:text-[20px] font-medium text-[#FFF] border-2 h-[40px] xl:h-[53px] px-[24px] xl:px-[36px] rounded-full transition-colors duration-300 hover:border-[#F6BB43] hover:text-[#F6BB43] cursor-pointer"
 			>ตารางเรียน
 		</button>
-		<button onclick={navigateToRegister} class="relative inline-block h-full cursor-pointer">
-			<img src={enrollBtn} alt="Enroll" class="block h-[56px] xl:h-[63px]" />
-			<span
-				class="absolute inset-0 flex items-center justify-center text-[16px] xl:text-[20px] font-medium text-[#391D0C]"
-			>
-				ลงทะเบียน
-			</span>
-		</button>
+		<Button fun={navigateToRegister} disabled={closeForm()}>
+			{closeForm() ? 'ปิดลงทะเบียน' : 'ลงทะเบียน'}
+		</Button>
 	</div>
 </nav>

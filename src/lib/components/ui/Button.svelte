@@ -12,7 +12,8 @@
 		isMobile = false,
 		decoration = true,
 		children,
-		disabled = false
+		disabled = false,
+		classDiv = ''
 	} = $props<{
 		type?: 'button' | 'submit';
 		variant?: 'primary' | 'ghost';
@@ -22,6 +23,7 @@
 		isMobile?: boolean;
 		decoration?: boolean;
 		children?: Snippet;
+		classDiv?: string;
 	}>();
 </script>
 
@@ -29,8 +31,8 @@
 	class={cn(
 		'inline-block rounded-full transition-transform duration-300 hover:-translate-y-1 w-auto',
 		variant === 'primary' && 'p-[3px] bg-gradient-to-b from-[#BB5B0D] via-[#673311] to-[#391D0C]',
-		(variant === 'ghost' || isMobile) && 'rounded-full'
-		// className
+		(variant === 'ghost' || isMobile) && 'rounded-full',
+		classDiv
 	)}
 >
 	<button

@@ -4,6 +4,8 @@
 	import circleEnrollBtn from '$lib/assets/images/navbar/circle-enroll-btn.svg';
 	import { LogOut } from '@lucide/svelte';
 	import { fade } from 'svelte/transition';
+	import Button from '$lib/components/ui/Button.svelte';
+	import { closeForm } from '$lib/utils/utility-util';
 
 	interface Props {
 		sections: { name: string; id: string }[];
@@ -54,7 +56,11 @@
 			>
 				<img src={schedule} alt="Schedule" />
 			</button>
-			<button onclick={navigateToRegister} class="relative">
+			<button
+				disabled={closeForm()}
+				onclick={navigateToRegister}
+				class="relative disabled:opacity-50 disabled:cursor-not-allowed"
+			>
 				<img src={circleEnrollBtn} alt="Circle Enroll Button" class="w-[48px] h-[48px]" />
 				<LogOut
 					class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -105,9 +111,10 @@
 								navigateToRegister();
 								isOpenMenu = false;
 							}}
-							class="text-[#391D0C] text-[20px] font-black py-[5px] border-2 w-full bg-radial from-[#F6DD54] via-[#EFC30A] to-[#E4910A] rounded-full"
+							disabled={closeForm()}
+							class="text-[#391D0C] text-[20px] font-black py-[5px] border-2 w-full bg-radial from-[#F6DD54] via-[#EFC30A] to-[#E4910A] rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
 						>
-							ลงทะเบียน
+							{closeForm() ? 'ปิดลงทะเบียน' : 'ลงทะเบียน'}
 						</button>
 					</div>
 				</div>
