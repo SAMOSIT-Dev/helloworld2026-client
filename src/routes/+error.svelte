@@ -42,9 +42,7 @@
 	);
 
 	const message = $derived(
-		status === 404
-			? 'อืม...เหมือนที่นี่จะไม่มีอะไรนะ ลองกลับไปก่อนดูไหม?'
-			: page.error?.message || 'ไม่ทราบสาเหตุข้อผิดพลาด'
+		page.error?.message || (status === 404 ? 'ไม่พบหน้านี้' : 'เกิดข้อผิดพลาดบางอย่าง')
 	);
 </script>
 
@@ -80,9 +78,7 @@
 			<div
 				class="md:w-210 w-88 rounded-2xl border border-neutral-600 bg-neutral-700/40 backdrop-blur-md md:backdrop-blur-blur py-4 md:py-7"
 			>
-				<p
-					class="text-center justify-start text-white text-sm md:text-3xl font-medium font-['Anantason']"
-				>
+				<p class="text-center justify-start text-white text-sm md:text-3xl font-medium">
 					{message}
 				</p>
 			</div>
@@ -90,7 +86,7 @@
 			<a
 				href={resolve('/')}
 				class={cn(
-					"inline-flex items-center gap-3 text-white font-['Anantason'] font-light transition-colors hover:text-[#EFC30A]",
+					'inline-flex items-center gap-3 text-white font-light transition-colors hover:text-[#EFC30A]',
 					// Mobile
 					'absolute bottom-[25%] left-1/2 -translate-x-1/2 text-base whitespace-nowrap',
 					// Desktop

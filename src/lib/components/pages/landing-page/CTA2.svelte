@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import background from '$lib/assets/images/cta2.png';
 	import Button from '$lib/components/ui/Button.svelte';
+	import { closeForm } from '$lib/utils/utility-util';
 
 	function goToQuiz() {
 		goto('/quiz');
@@ -59,9 +60,10 @@
 			<Button
 				fun={goToRegisterPage}
 				variant="primary"
+				disabled={closeForm()}
 				className="py-4 md:py-5 w-full md:w-[250px] lg:w-[300px] text-lg md:text-xl lg:text-2xl"
 			>
-				ลงทะเบียน
+				{closeForm() ? 'ปิดรับลงทะเบียน' : 'ลงทะเบียน'}
 			</Button>
 		</div>
 	</div>
