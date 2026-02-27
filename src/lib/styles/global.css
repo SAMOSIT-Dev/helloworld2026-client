@@ -1,8 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap');
 @import 'tailwindcss';
+@plugin 'tailwindcss-animate';
 
 @theme {
 	--default-font-family: 'Anuphan', sans-serif;
+	--animate-marquee-left: marquee-left var(--duration, 10s) linear infinite;
+	--animate-marquee-up: marquee-up var(--duration, 10s) linear infinite;
+
+	@keyframes marquee-left {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-100% - var(--gap)));
+		}
+	}
+
+	@keyframes marquee-up {
+		from {
+			transform: translateY(0);
+		}
+		to {
+			transform: translateY(calc(-100% - var(--gap)));
+		}
+	}
 }
 
 .marquee {
@@ -15,7 +36,7 @@
 	display: flex;
 	gap: 4rem;
 	white-space: nowrap;
-	animation: scroll 50s linear infinite;
+	animation: scroll 10s linear infinite;
 }
 
 .sponsor-text {
