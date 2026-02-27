@@ -2,9 +2,11 @@
 	import { ChevronLeft, ChevronRight } from '@lucide/svelte';
 	import mobileScreenshotFrame from '$lib/assets/images/background/mobile-screenshot-frame.svg';
 	import { fade } from 'svelte/transition';
+	import type { SponsorType } from './DesktopAbout.svelte';
+	import Marquee from '$lib/components/shared/Marquee.svelte';
 
 	interface Props {
-		sponsors: string[];
+		sponsors: SponsorType[];
 		currentIcon: number;
 		carouselIcon: (dir: number) => void;
 		icons: {
@@ -21,17 +23,21 @@
 </script>
 
 <section class="flex relative md:hidden bg-[#F6F7FB] flex-col overflow-hidden gap-[80px]">
-	<div class=" w-full h-[120px] border-b-2 border-[#97A5DA] overflow-hidden">
-		<div class="marquee">
-			<div class="marquee-track">
-				{#each sponsors as sponsor}
+	<div class="w-full h-[120px] border-b-2 border-[#97A5DA] overflow-hidden flex items-center">
+		<Marquee
+			class="gap-[2rem] [--duration:5s] [--gap:2rem] w-full"
+			innerClassName="gap-[2rem]"
+			fade
+			numberOfCopies={4}
+		>
+			{#each sponsors as sponsor}
+				{#if sponsor.type === 'text'}
 					<span class="sponsor-text">{sponsor}</span>
-				{/each}
-				{#each sponsors as sponsor}
-					<span class="sponsor-text">{sponsor}</span>
-				{/each}
-			</div>
-		</div>
+				{:else if sponsor.type === 'img'}
+					<img class="w-auto h-20" src={sponsor.src} alt={sponsor.alt} />
+				{/if}
+			{/each}
+		</Marquee>
 	</div>
 	<div class="flex flex-col flex-1 px-[5%] w-full gap-[60px]">
 		<div class="flex flex-col gap-[30px] mb-[40px]">

@@ -1,10 +1,14 @@
 <script lang="ts">
-	import DesktopAbout from './DesktopAbout.svelte';
+	import DesktopAbout, { type SponsorType } from './DesktopAbout.svelte';
 	import MobileAbout from './MobileAbout.svelte';
 	import uxuiIcon from '$lib/assets/images/branch/uxui-icon.svg';
 	import databaseIcon from '$lib/assets/images/branch/database-icon.svg';
 	import frontendIcon from '$lib/assets/images/branch/frontend-icon.svg';
 	import backendIcon from '$lib/assets/images/branch/backend-icon.svg';
+
+	import LactasoyBranding from '$lib/assets/images/sponsor/Lactasoy.png';
+	import OQUBranding from '$lib/assets/images/sponsor/OQU.png';
+	import LoongnhoomSquareBranding from '$lib/assets/images/sponsor/Loongnhoom_Square.png';
 
 	let currentIcon = $state(0);
 
@@ -52,15 +56,22 @@
 		}
 	];
 
-	const sponsors = [
-		'SPONSOR1',
-		'SPONSOR2',
-		'SPONSOR3',
-		'SPONSOR4',
-		'SPONSOR5',
-		'SPONSOR6',
-		'SPONSOR7',
-		'SPONSOR8'
+	const sponsors: SponsorType[] = [
+		{
+			type: 'img',
+			src: LactasoyBranding,
+			alt: 'Lactasoy'
+		},
+		{
+			type: 'img',
+			src: OQUBranding,
+			alt: 'OQU'
+		},
+		{
+			type: 'img',
+			src: LoongnhoomSquareBranding,
+			alt: 'loongnhoom_square'
+		}
 	];
 
 	const carouselIcon = (dir: number) => {

@@ -2,7 +2,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import banner from '$lib/assets/est_6.png';
 
-	import logo from '$lib/assets/images/logo/hello-logo.svg'
+	import logo from '$lib/assets/images/logo/hello-logo.svg';
 
 	import '$lib/styles/global.css';
 	import NavBar from '$lib/components/shared/navbar/NavBar.svelte';
