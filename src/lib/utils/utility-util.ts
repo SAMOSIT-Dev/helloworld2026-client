@@ -8,6 +8,6 @@ export function cn(...classValue: ClassValue[]) {
 
 export const closeForm = () => {
 	const now = new Date();
-	const closeDate = new Date('2026-02-26T23:59:00');
+	const closeDate = new Date('2026-02-27T23:59:00');
 	return now > closeDate;
 };
