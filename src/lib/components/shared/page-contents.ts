@@ -13,9 +13,9 @@ export type PageItem = {
 
 export const pageContents: PageItem[] = [
 	{
-		title: 'Schedule',
+		title: 'schedule',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		href: '/',
+		href: '/schedule',
 		icon: Calendar,
 		sidebar: true
 	},
