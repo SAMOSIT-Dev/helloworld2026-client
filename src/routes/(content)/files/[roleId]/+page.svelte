@@ -14,7 +14,7 @@
 
 <div class="flex flex-col items-start justify-start h-full py-10 md:py-15 md:px-12 gap-10">
 	<div
-		class="text-center md:text-start text-white text-4xl md:text-5xl font-semibold font-['Anantason'] w-full shrink-0"
+		class="text-center md:text-start text-white text-4xl md:text-5xl font-semibold w-full shrink-0"
 	>
 		{props.data.name} Files
 	</div>

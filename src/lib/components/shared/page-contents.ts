@@ -1,6 +1,6 @@
 import type { Pathname } from '$app/types';
 import type { IconProps } from '@lucide/svelte';
-import { Calendar, File, FlaskConical } from '@lucide/svelte';
+import { File, FlaskConical } from '@lucide/svelte';
 import type { Component } from 'svelte';
 
 export type PageItem = {
@@ -13,15 +13,8 @@ export type PageItem = {
 
 export const pageContents: PageItem[] = [
 	{
-		title: 'schedule',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		href: '/schedule',
-		icon: Calendar,
-		sidebar: true
-	},
-	{
 		title: 'Files',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+		description: 'สไลด์เนื้อหาการเรียนการสอนแยกตามสัปดาห์',
 		href: '/files',
 		icon: File,
 		sidebar: true
