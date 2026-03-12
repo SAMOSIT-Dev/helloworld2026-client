@@ -7,7 +7,7 @@
 
 	interface Props {
 		sections: { name: string; id: string }[];
-		navigateToFiles: () => void;
+		navigateToSchedule: () => void;
 		navigateToRegister: () => void;
 		navigateOrScrollToSection: (id: string) => void;
 	}
@@ -16,7 +16,7 @@
 	let timeout: ReturnType<typeof setTimeout>;
 	let {
 		sections = [],
-		navigateToFiles,
+		navigateToSchedule,
 		navigateToRegister,
 		navigateOrScrollToSection
 	}: Props = $props();
@@ -83,9 +83,9 @@
 	</div>
 	<div class="flex flex-row items-center gap-[8px] py-[8px]">
 		<button
-			onclick={navigateToFiles}
+			onclick={navigateToSchedule}
 			class="text-[16px] xl:text-[20px] font-medium text-[#FFF] border-2 h-[40px] xl:h-[53px] px-[24px] xl:px-[36px] rounded-full transition-colors duration-300 hover:border-[#F6BB43] hover:text-[#F6BB43] cursor-pointer"
-			>เอกสารประกอบการเรียน
+			>ตารางเรียน
 		</button>
 		<Button fun={navigateToRegister} disabled={closeForm()}>
 			{closeForm() ? 'ปิดลงทะเบียน' : 'ลงทะเบียน'}

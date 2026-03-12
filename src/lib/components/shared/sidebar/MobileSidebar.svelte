@@ -28,7 +28,7 @@
 			>
 				<ArrowLeft class="w-full h-full object-contain text-white" aria-hidden="true" />
 			</button>
-			<span class="justify-start text-white text-3xl font-semibold">
+			<span class="justify-start text-white text-3xl font-semibold font-['Anantason']">
 				{pageContent?.title || 'Untitled Page'}
 			</span>
 		</div>

@@ -2,14 +2,14 @@
 	import wavingModel from '$lib/assets/images/navbar/waving-model.svg';
 	import schedule from '$lib/assets/images/navbar/schedule.svg';
 	import circleEnrollBtn from '$lib/assets/images/navbar/circle-enroll-btn.svg';
-	import { FileIcon, LogOut } from '@lucide/svelte';
+	import { LogOut } from '@lucide/svelte';
 	import { fade } from 'svelte/transition';
 	import Button from '$lib/components/ui/Button.svelte';
 	import { closeForm } from '$lib/utils/utility-util';
 
 	interface Props {
 		sections: { name: string; id: string }[];
-		navigateToFiles: () => void;
+		navigateToSchedule: () => void;
 		navigateToRegister: () => void;
 		navigateOrScrollToSection: (id: string) => void;
 	}
@@ -17,7 +17,7 @@
 	let isOpenMenu = $state(false);
 	let {
 		sections = [],
-		navigateToFiles,
+		navigateToSchedule,
 		navigateToRegister,
 		navigateOrScrollToSection
 	}: Props = $props();
@@ -51,11 +51,10 @@
 		</div>
 		<div class="flex flex-row gap-[8px] py-[8px] pr-[20px] md:pr-[42px]">
 			<button
-				onclick={navigateToFiles}
-				class=" border-2 border-[#EEE] text-white rounded-full w-[48px] h-[48px] flex items-center justify-center"
+				onclick={navigateToSchedule}
+				class=" border-2 border-[#EEE] rounded-full w-[48px] h-[48px] flex items-center justify-center"
 			>
-				<!-- <img src={schedule} alt="Schedule" /> -->
-				<FileIcon />
+				<img src={schedule} alt="Schedule" />
 			</button>
 			<button
 				disabled={closeForm()}
@@ -96,12 +95,12 @@
 					<button
 						in:fade={{ duration: DURATION }}
 						onclick={() => {
-							navigateToFiles();
+							navigateToSchedule();
 							isOpenMenu = false;
 						}}
 						class="text-white text-[20px] font-black py-[12px] h-[60px] w-[80%] border-2 border-[#EEE] rounded-full z-50"
 					>
-						เอกสารประกอบการเรียน
+						ตารางเรียน
 					</button>
 					<div
 						in:fade={{ duration: DURATION }}

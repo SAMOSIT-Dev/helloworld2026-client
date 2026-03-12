@@ -1,5 +1,4 @@
 import type { Role } from '$lib/components/shared/roles';
-import { getFileMetaData } from './files-metadata';
 
 export type FileStatus = 'available' | 'locked' | 'missing';
 
@@ -16,47 +15,40 @@ export type FileItem = {
 	scheduleIds?: string[];
 };
 
-export const roles: Role[] = ['ux-ui', 'frontend', 'backend', 'database'];
+const roles: Role[] = ['ux-ui', 'frontend', 'backend', 'database'];
 
-const storageUrl = 'browser/storage/hw26';
+const kinds = ['pdf', 'png', 'sql', 'docx', 'zip', 'json'];
 
-const getFileStatus = (date: Date): FileStatus => {
-	const now = new Date();
-	if (date <= now) return 'available';
-	return 'locked';
+const randomFrom = <T>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
+
+const randomSize = () => {
+	const size = (Math.random() * 5 + 0.5).toFixed(1);
+	return `${size} MB`;
 };
 
-const storageUrlBuilder = (role: (typeof roles)[number], fileName: string) => {
-	return `/${storageUrl}/${role}/${fileName}`;
+const randomDate = (index: number) => {
+	const date = new Date(2024, 0, 1);
+	date.setDate(date.getDate() + index * 3);
+	return date;
 };
 
-const weeklyClassDates: Date[][] = [
-	[new Date('2026-03-07 09:30'), new Date('2026-03-07 13:00'), new Date('2026-03-08')],
-	[new Date('2026-03-14 09:30'), new Date('2026-03-14 13:00'), new Date('2026-03-15')],
-	[new Date('2026-03-21 09:00'), new Date('2026-03-21 13:00')]
-];
+export const files: FileItem[] = roles.flatMap((role, roleIndex) =>
+	Array.from({ length: 10 }).map((_, i) => {
+		const id = `${role}-${i + 1}`;
+		const kind = randomFrom(kinds);
+		const sortDate = randomDate(roleIndex * 10 + i);
 
-export const getWeeklyClassDates = (weekIndex: number): Date[] => weeklyClassDates[weekIndex] ?? [];
-
-export const files: FileItem[] = roles.flatMap((role) => {
-	let classIndex = 0;
-	return weeklyClassDates.flatMap((weekDates) =>
-		weekDates.map((date) => {
-			classIndex++;
-			const id = `${role}-c${classIndex}`;
-			const meta = getFileMetaData(id);
-
-			return {
-				id,
-				title: `Class ${classIndex}`,
-				kind: 'pdf',
-				timeLabel: date.toDateString(),
-				sizeLabel: meta?.size ?? '--',
-				downloadUrl: meta ? storageUrlBuilder(role, meta.name) : '',
-				role,
-				sortDate: date,
-				status: getFileStatus(date)
-			};
-		})
-	);
-});
+		return {
+			id,
+			title: `${role.toUpperCase()} File ${i + 1}`,
+			kind,
+			timeLabel: sortDate.toDateString(),
+			sizeLabel: randomSize(),
+			downloadUrl: `/files/${role}/${id}.${kind}`,
+			role,
+			sortDate,
+			status: i % 4 === 0 ? 'locked' : i % 7 === 0 ? 'missing' : 'available',
+			scheduleIds: [`schedule-${role}-${i + 1}`]
+		};
+	})
+);
