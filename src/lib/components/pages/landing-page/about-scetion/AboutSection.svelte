@@ -5,7 +5,7 @@
 	import databaseIcon from '$lib/assets/images/branch/database-icon.svg';
 	import frontendIcon from '$lib/assets/images/branch/frontend-icon.svg';
 	import backendIcon from '$lib/assets/images/branch/backend-icon.svg';
-	import KatoBranding from '$lib/assets/images/sponsor/kato-sponsor.png';
+	import HerbiTeaBranding from '$lib/assets/images/sponsor/herbi-tea.png';
 	import LactasoyBranding from '$lib/assets/images/sponsor/Lactasoy.png';
 	import OQUBranding from '$lib/assets/images/sponsor/OQU.png';
 	import LoongnhoomSquareBranding from '$lib/assets/images/sponsor/Loongnhoom_Square.png';
@@ -74,8 +74,8 @@
 		},
 		{
 			type: 'img',
-			src: KatoBranding,
-			alt: 'KATO'
+			src: HerbiTeaBranding,
+			alt: 'Herbi Tea'
 		}
 	];
 
