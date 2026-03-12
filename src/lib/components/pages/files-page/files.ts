@@ -1,5 +1,5 @@
 import type { Role } from '$lib/components/shared/roles';
-import { getFileMetaData } from './files-metadata';
+import { getFileMetaData, type FileMeta } from './files-metadata';
 
 export type FileStatus = 'available' | 'locked' | 'missing';
 
@@ -13,6 +13,7 @@ export type FileItem = {
 	role: Role;
 	sortDate: Date;
 	status?: FileStatus;
+	meta?: FileMeta | null;
 	scheduleIds?: string[];
 };
 
@@ -49,6 +50,7 @@ export const files: FileItem[] = roles.flatMap((role) => {
 			return {
 				id,
 				title: `Class ${classIndex}`,
+				meta,
 				kind: 'pdf',
 				timeLabel: date.toDateString(),
 				sizeLabel: meta?.size ?? '--',

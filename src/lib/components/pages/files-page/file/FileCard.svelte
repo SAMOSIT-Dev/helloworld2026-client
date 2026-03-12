@@ -35,7 +35,7 @@
 			a.href = url;
 
 			const base = file.title?.trim() || 'download';
-			a.download = file.kind ? `${base}.${file.kind}` : base;
+			a.download = file?.meta ? file.meta.name : base;
 
 			document.body.appendChild(a);
 			a.click();
