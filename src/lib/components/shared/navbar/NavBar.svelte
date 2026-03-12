@@ -20,8 +20,8 @@
 		el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	};
 
-	function navigateToSchedule() {
-		goto('/schedule');
+	function navigateToFiles() {
+		goto('/files');
 	}
 
 	function navigateToRegister() {
@@ -37,5 +37,5 @@
 	}
 </script>
 
-<DesktopNavBar {sections} {navigateToSchedule} {navigateToRegister} {navigateOrScrollToSection} />
-<MobileNavBar {sections} {navigateToSchedule} {navigateToRegister} {navigateOrScrollToSection} />
+<DesktopNavBar {sections} {navigateToFiles} {navigateToRegister} {navigateOrScrollToSection} />
+<MobileNavBar {sections} {navigateToFiles} {navigateToRegister} {navigateOrScrollToSection} />

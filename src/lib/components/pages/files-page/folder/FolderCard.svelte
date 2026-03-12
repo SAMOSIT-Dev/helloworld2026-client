@@ -25,7 +25,7 @@
 	<span
 		class={cn(
 			'-mt-3',
-			"text-center justify-start text-white text-base font-medium font-['Inter'] [text-shadow:0px_4px_19px_rgb(0_0_0/0.64)]"
+			'text-center justify-start text-white text-base font-medium [text-shadow:0px_4px_19px_rgb(0_0_0/0.64)]'
 		)}
 	>
 		{label}
