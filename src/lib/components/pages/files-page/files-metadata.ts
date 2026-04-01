@@ -121,6 +121,11 @@ export const filesMetadata: FileMeta[] = [
 		size: '1.1 MB'
 	},
 	{
+		id: 'backend-c8',
+		name: 'Git Workshop Class 8.pdf',
+		size: '776.1 KB'
+	},
+	{
 		id: 'database-c1',
 		name: 'Database Fundamentals Class1.pdf',
 		size: '3.1 MB'
