@@ -132,13 +132,13 @@ export const filesMetadata: FileMeta[] = [
 	},
 	{
 		id: 'database-c2',
-		name: 'Business Requirement Class2.pdf',
-		size: '961.9 KB'
+		name: 'Business Requiremen - Entity & Attribute Class 2.pdf',
+		size: '1.6 MB'
 	},
 	{
 		id: 'database-c3',
-		name: 'Entity & Attribute Class3.pdf',
-		size: '991.2 KB'
+		name: 'Key&Constraints - Relationship&ER Diagram Class 3.pdf',
+		size: '2.1 MB'
 	},
 	{
 		id: 'database-c4',
